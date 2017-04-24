@@ -1,0 +1,635 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		70147FFF1EAD34030065F8BF /* ChartsCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70147FFD1EAD34030065F8BF /* ChartsCore.swift */; };
+		701480001EAD34030065F8BF /* QuadCurvedAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70147FFE1EAD34030065F8BF /* QuadCurvedAlgorithm.swift */; };
+		701480031EAD34AB0065F8BF /* HamsCurveChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701480011EAD34AB0065F8BF /* HamsCurveChart.swift */; };
+		701480041EAD34AB0065F8BF /* HamsCurveChartPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701480021EAD34AB0065F8BF /* HamsCurveChartPoint.swift */; };
+		701480061EAD35E00065F8BF /* HamsBackgoundStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701480051EAD35E00065F8BF /* HamsBackgoundStyle.swift */; };
+		701480081EAD36330065F8BF /* HamsIndexPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701480071EAD36330065F8BF /* HamsIndexPath.swift */; };
+		7014800B1EAD3FF40065F8BF /* ChartOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7014800A1EAD3FF40065F8BF /* ChartOffset.swift */; };
+		701480151EAD47A40065F8BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701480141EAD47A40065F8BF /* AppDelegate.swift */; };
+		701480171EAD47A40065F8BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701480161EAD47A40065F8BF /* ViewController.swift */; };
+		7014801A1EAD47A40065F8BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 701480181EAD47A40065F8BF /* Main.storyboard */; };
+		7014801C1EAD47A40065F8BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7014801B1EAD47A40065F8BF /* Assets.xcassets */; };
+		7014801F1EAD47A40065F8BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7014801D1EAD47A40065F8BF /* LaunchScreen.storyboard */; };
+		701480241EAD48630065F8BF /* HamsterUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709A437E1EA3262C0076CED4 /* HamsterUIKit.framework */; };
+		701480251EAD48630065F8BF /* HamsterUIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 709A437E1EA3262C0076CED4 /* HamsterUIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		709A43881EA3262C0076CED4 /* HamsterUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709A437E1EA3262C0076CED4 /* HamsterUIKit.framework */; };
+		709A438D1EA3262C0076CED4 /* HamsterUIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709A438C1EA3262C0076CED4 /* HamsterUIKitTests.swift */; };
+		709A438F1EA3262C0076CED4 /* HamsterUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 709A43811EA3262C0076CED4 /* HamsterUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		709A43A81EA3AECA0076CED4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709A43A71EA3AECA0076CED4 /* Extension.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		701480261EAD48630065F8BF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 709A43751EA3262C0076CED4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 709A437D1EA3262C0076CED4;
+			remoteInfo = HamsterUIKit;
+		};
+		709A43891EA3262C0076CED4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 709A43751EA3262C0076CED4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 709A437D1EA3262C0076CED4;
+			remoteInfo = HamsterUIKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		701480281EAD48630065F8BF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				701480251EAD48630065F8BF /* HamsterUIKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		70147FFD1EAD34030065F8BF /* ChartsCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsCore.swift; sourceTree = "<group>"; };
+		70147FFE1EAD34030065F8BF /* QuadCurvedAlgorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuadCurvedAlgorithm.swift; sourceTree = "<group>"; };
+		701480011EAD34AB0065F8BF /* HamsCurveChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamsCurveChart.swift; sourceTree = "<group>"; };
+		701480021EAD34AB0065F8BF /* HamsCurveChartPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamsCurveChartPoint.swift; sourceTree = "<group>"; };
+		701480051EAD35E00065F8BF /* HamsBackgoundStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamsBackgoundStyle.swift; sourceTree = "<group>"; };
+		701480071EAD36330065F8BF /* HamsIndexPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamsIndexPath.swift; sourceTree = "<group>"; };
+		7014800A1EAD3FF40065F8BF /* ChartOffset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartOffset.swift; sourceTree = "<group>"; };
+		701480121EAD47A40065F8BF /* demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		701480141EAD47A40065F8BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		701480161EAD47A40065F8BF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		701480191EAD47A40065F8BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7014801B1EAD47A40065F8BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7014801E1EAD47A40065F8BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		701480201EAD47A40065F8BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		709A437E1EA3262C0076CED4 /* HamsterUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HamsterUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		709A43811EA3262C0076CED4 /* HamsterUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HamsterUIKit.h; sourceTree = "<group>"; };
+		709A43821EA3262C0076CED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		709A43871EA3262C0076CED4 /* HamsterUIKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HamsterUIKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		709A438C1EA3262C0076CED4 /* HamsterUIKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamsterUIKitTests.swift; sourceTree = "<group>"; };
+		709A438E1EA3262C0076CED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		709A43A71EA3AECA0076CED4 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7014800F1EAD47A40065F8BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				701480241EAD48630065F8BF /* HamsterUIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		709A437A1EA3262C0076CED4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		709A43841EA3262C0076CED4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				709A43881EA3262C0076CED4 /* HamsterUIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		701480131EAD47A40065F8BF /* demo */ = {
+			isa = PBXGroup;
+			children = (
+				701480141EAD47A40065F8BF /* AppDelegate.swift */,
+				701480161EAD47A40065F8BF /* ViewController.swift */,
+				701480181EAD47A40065F8BF /* Main.storyboard */,
+				7014801B1EAD47A40065F8BF /* Assets.xcassets */,
+				7014801D1EAD47A40065F8BF /* LaunchScreen.storyboard */,
+				701480201EAD47A40065F8BF /* Info.plist */,
+			);
+			path = demo;
+			sourceTree = "<group>";
+		};
+		709A43741EA3262C0076CED4 = {
+			isa = PBXGroup;
+			children = (
+				709A43801EA3262C0076CED4 /* HamsterUIKit */,
+				709A438B1EA3262C0076CED4 /* HamsterUIKitTests */,
+				701480131EAD47A40065F8BF /* demo */,
+				709A437F1EA3262C0076CED4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		709A437F1EA3262C0076CED4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				709A437E1EA3262C0076CED4 /* HamsterUIKit.framework */,
+				709A43871EA3262C0076CED4 /* HamsterUIKitTests.xctest */,
+				701480121EAD47A40065F8BF /* demo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		709A43801EA3262C0076CED4 /* HamsterUIKit */ = {
+			isa = PBXGroup;
+			children = (
+				709A43981EA326F20076CED4 /* Libraries */,
+				709A43811EA3262C0076CED4 /* HamsterUIKit.h */,
+				701480011EAD34AB0065F8BF /* HamsCurveChart.swift */,
+				701480021EAD34AB0065F8BF /* HamsCurveChartPoint.swift */,
+				709A43821EA3262C0076CED4 /* Info.plist */,
+				701480051EAD35E00065F8BF /* HamsBackgoundStyle.swift */,
+				701480071EAD36330065F8BF /* HamsIndexPath.swift */,
+			);
+			path = HamsterUIKit;
+			sourceTree = "<group>";
+		};
+		709A438B1EA3262C0076CED4 /* HamsterUIKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				709A438C1EA3262C0076CED4 /* HamsterUIKitTests.swift */,
+				709A438E1EA3262C0076CED4 /* Info.plist */,
+			);
+			path = HamsterUIKitTests;
+			sourceTree = "<group>";
+		};
+		709A43981EA326F20076CED4 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				70147FFD1EAD34030065F8BF /* ChartsCore.swift */,
+				70147FFE1EAD34030065F8BF /* QuadCurvedAlgorithm.swift */,
+				709A43A71EA3AECA0076CED4 /* Extension.swift */,
+				7014800A1EAD3FF40065F8BF /* ChartOffset.swift */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		709A437B1EA3262C0076CED4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				709A438F1EA3262C0076CED4 /* HamsterUIKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		701480111EAD47A40065F8BF /* demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 701480211EAD47A40065F8BF /* Build configuration list for PBXNativeTarget "demo" */;
+			buildPhases = (
+				7014800E1EAD47A40065F8BF /* Sources */,
+				7014800F1EAD47A40065F8BF /* Frameworks */,
+				701480101EAD47A40065F8BF /* Resources */,
+				701480281EAD48630065F8BF /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				701480271EAD48630065F8BF /* PBXTargetDependency */,
+			);
+			name = demo;
+			productName = demo;
+			productReference = 701480121EAD47A40065F8BF /* demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		709A437D1EA3262C0076CED4 /* HamsterUIKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 709A43921EA3262C0076CED4 /* Build configuration list for PBXNativeTarget "HamsterUIKit" */;
+			buildPhases = (
+				709A43791EA3262C0076CED4 /* Sources */,
+				709A437A1EA3262C0076CED4 /* Frameworks */,
+				709A437B1EA3262C0076CED4 /* Headers */,
+				709A437C1EA3262C0076CED4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HamsterUIKit;
+			productName = HamsterUIKit;
+			productReference = 709A437E1EA3262C0076CED4 /* HamsterUIKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		709A43861EA3262C0076CED4 /* HamsterUIKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 709A43951EA3262C0076CED4 /* Build configuration list for PBXNativeTarget "HamsterUIKitTests" */;
+			buildPhases = (
+				709A43831EA3262C0076CED4 /* Sources */,
+				709A43841EA3262C0076CED4 /* Frameworks */,
+				709A43851EA3262C0076CED4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				709A438A1EA3262C0076CED4 /* PBXTargetDependency */,
+			);
+			name = HamsterUIKitTests;
+			productName = HamsterUIKitTests;
+			productReference = 709A43871EA3262C0076CED4 /* HamsterUIKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		709A43751EA3262C0076CED4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Howard Wang";
+				TargetAttributes = {
+					701480111EAD47A40065F8BF = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = Q5YD476ZAX;
+						ProvisioningStyle = Automatic;
+					};
+					709A437D1EA3262C0076CED4 = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = Q5YD476ZAX;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
+					};
+					709A43861EA3262C0076CED4 = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = Q5YD476ZAX;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 709A43781EA3262C0076CED4 /* Build configuration list for PBXProject "HamsterUIKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 709A43741EA3262C0076CED4;
+			productRefGroup = 709A437F1EA3262C0076CED4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				709A437D1EA3262C0076CED4 /* HamsterUIKit */,
+				709A43861EA3262C0076CED4 /* HamsterUIKitTests */,
+				701480111EAD47A40065F8BF /* demo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		701480101EAD47A40065F8BF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7014801F1EAD47A40065F8BF /* LaunchScreen.storyboard in Resources */,
+				7014801C1EAD47A40065F8BF /* Assets.xcassets in Resources */,
+				7014801A1EAD47A40065F8BF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		709A437C1EA3262C0076CED4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		709A43851EA3262C0076CED4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7014800E1EAD47A40065F8BF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				701480171EAD47A40065F8BF /* ViewController.swift in Sources */,
+				701480151EAD47A40065F8BF /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		709A43791EA3262C0076CED4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				709A43A81EA3AECA0076CED4 /* Extension.swift in Sources */,
+				701480061EAD35E00065F8BF /* HamsBackgoundStyle.swift in Sources */,
+				701480041EAD34AB0065F8BF /* HamsCurveChartPoint.swift in Sources */,
+				701480081EAD36330065F8BF /* HamsIndexPath.swift in Sources */,
+				70147FFF1EAD34030065F8BF /* ChartsCore.swift in Sources */,
+				7014800B1EAD3FF40065F8BF /* ChartOffset.swift in Sources */,
+				701480001EAD34030065F8BF /* QuadCurvedAlgorithm.swift in Sources */,
+				701480031EAD34AB0065F8BF /* HamsCurveChart.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		709A43831EA3262C0076CED4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				709A438D1EA3262C0076CED4 /* HamsterUIKitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		701480271EAD48630065F8BF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 709A437D1EA3262C0076CED4 /* HamsterUIKit */;
+			targetProxy = 701480261EAD48630065F8BF /* PBXContainerItemProxy */;
+		};
+		709A438A1EA3262C0076CED4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 709A437D1EA3262C0076CED4 /* HamsterUIKit */;
+			targetProxy = 709A43891EA3262C0076CED4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		701480181EAD47A40065F8BF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				701480191EAD47A40065F8BF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7014801D1EAD47A40065F8BF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7014801E1EAD47A40065F8BF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		701480221EAD47A40065F8BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Q5YD476ZAX;
+				INFOPLIST_FILE = demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = howard.demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		701480231EAD47A40065F8BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Q5YD476ZAX;
+				INFOPLIST_FILE = demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = howard.demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+		709A43901EA3262C0076CED4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		709A43911EA3262C0076CED4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		709A43931EA3262C0076CED4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = Q5YD476ZAX;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = HamsterUIKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = howard.HamsterUIKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		709A43941EA3262C0076CED4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = Q5YD476ZAX;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = HamsterUIKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = howard.HamsterUIKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		709A43961EA3262C0076CED4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = Q5YD476ZAX;
+				INFOPLIST_FILE = HamsterUIKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = howard.HamsterUIKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		709A43971EA3262C0076CED4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = Q5YD476ZAX;
+				INFOPLIST_FILE = HamsterUIKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = howard.HamsterUIKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		701480211EAD47A40065F8BF /* Build configuration list for PBXNativeTarget "demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				701480221EAD47A40065F8BF /* Debug */,
+				701480231EAD47A40065F8BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		709A43781EA3262C0076CED4 /* Build configuration list for PBXProject "HamsterUIKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				709A43901EA3262C0076CED4 /* Debug */,
+				709A43911EA3262C0076CED4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		709A43921EA3262C0076CED4 /* Build configuration list for PBXNativeTarget "HamsterUIKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				709A43931EA3262C0076CED4 /* Debug */,
+				709A43941EA3262C0076CED4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		709A43951EA3262C0076CED4 /* Build configuration list for PBXNativeTarget "HamsterUIKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				709A43961EA3262C0076CED4 /* Debug */,
+				709A43971EA3262C0076CED4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 709A43751EA3262C0076CED4 /* Project object */;
+}
