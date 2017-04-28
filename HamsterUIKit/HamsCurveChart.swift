@@ -10,7 +10,7 @@ import UIKit
 
 public protocol HamsCurveChartDataSource{
 	func curveChart(_ curveChart: HamsCurveChart, pointForChart indexPath: HamsIndexPath) -> HamsCurveChartPoint
-	func numberOfViews(in tableView: HamsCurveChart) -> Int
+	func numberOfViews(in curveChart: HamsCurveChart) -> Int
 	
 	func curveChart(_ curveChart: HamsCurveChart, numberOfPointsInView view: Int) -> Int
 }
@@ -145,7 +145,7 @@ open class HamsCurveChart: UIControl {
 		labels = labelStyle.labels(length: numberOfPoints)
 		if numberOfPoints > 0 {
 			for i in 0..<numberOfPoints(in: currentView) {
-				let curveChartPoint = dataSource?.curveChart(self, pointForChart: HamsIndexPath(point: i, view: currentView))
+				let curveChartPoint = dataSource?.curveChart(self, pointForChart: HamsIndexPath(column: i, view: currentView))
 				graphPoints.append((curveChartPoint?.pointValue)!)
 			}
 			if graphPoints.max() == 0 {
@@ -192,7 +192,7 @@ open class HamsCurveChart: UIControl {
 		if suggestValue > 0 && !isDataEmpty{
 			drawSuggestion(quadCurve: quadCurve)
 		}
-		labelWidth = quadCurve.spacer
+		labelWidth = quadCurve.unitWidth
 		
 		drawPoint(ctx: context!, quadCurve: quadCurve)
 	}
@@ -325,7 +325,7 @@ open class HamsCurveChart: UIControl {
 
 			if !isDataEmpty {
 				let ind = i - start
-				let curveChartPoint = dataSource?.curveChart(self, pointForChart: HamsIndexPath(point: ind, view: currentView))
+				let curveChartPoint = dataSource?.curveChart(self, pointForChart: HamsIndexPath(column: ind, view: currentView))
 				
 				let outerCircle = drawOuterCircle(ctx: ctx, point: point, curveChartPoint: curveChartPoint!)
 				
@@ -479,35 +479,7 @@ open class HamsCurveChart: UIControl {
 	}
 }
 
-public enum HamsLabelStyle {
-	case week
-	case custom([String])
-	
-	static let weekLabels = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-	
-	func labels(length: Int) -> [String] {
-		switch self {
-		case .week:
-			var ind:Int = Calendar(identifier: .gregorian).component(.weekday, from: Date()) - 1
-			return configureLabels(array: HamsLabelStyle.weekLabels, length: length, start: &ind)
-		case .custom(let arr):
-			var ind = arr.count - 1
-			return configureLabels(array: arr, length: length, start: &ind)
-		}
-	}
-	
-	fileprivate func configureLabels(array: [String], length: Int, start: inout Int) -> [String] {
-		var labels = [String]()
-		for _ in 0..<length {
-			if start == -1 {
-				start = array.count - 1
-			}
-			labels.insert(array[start], at: 0)
-			start -= 1
-		}
-		return labels
-	}
-}
+
 
 
 
