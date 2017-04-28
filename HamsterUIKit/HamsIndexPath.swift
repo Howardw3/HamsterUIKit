@@ -8,13 +8,13 @@
 
 import Foundation
 open class HamsIndexPath {
-	fileprivate var _point = 0
+	fileprivate var _column = 0
 	fileprivate var _view = 0
-	public init(point: Int, view: Int) {
-		_point = point
+	public init(column: Int, view: Int) {
+		_column = column
 		_view = view
 	}
 	
-	open var point: Int { return _point }
+	open var column: Int { return _column }
 	open var view: Int { return _view }
 }

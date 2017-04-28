@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7011FE0C1EB2EC8F00157E9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7011FE0B1EB2EC8F00157E9B /* AppDelegate.swift */; };
+		7011FE131EB2EC8F00157E9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7011FE121EB2EC8F00157E9B /* Assets.xcassets */; };
+		7011FE161EB2EC8F00157E9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7011FE141EB2EC8F00157E9B /* LaunchScreen.storyboard */; };
+		7011FE1C1EB2EC9D00157E9B /* BarChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7011FE1B1EB2EC9D00157E9B /* BarChartViewController.swift */; };
+		7011FE1D1EB2ED0000157E9B /* HamsterUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709A437E1EA3262C0076CED4 /* HamsterUIKit.framework */; };
+		7011FE1E1EB2ED0000157E9B /* HamsterUIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 709A437E1EA3262C0076CED4 /* HamsterUIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7011FE231EB2F4F700157E9B /* HamsLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7011FE221EB2F4F700157E9B /* HamsLabelStyle.swift */; };
+		7011FE251EB39B3A00157E9B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7011FE241EB39B3A00157E9B /* ViewController.swift */; };
+		7011FE281EB39B9000157E9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7011FE261EB39B9000157E9B /* Main.storyboard */; };
 		70147FFF1EAD34030065F8BF /* ChartsCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70147FFD1EAD34030065F8BF /* ChartsCore.swift */; };
 		701480001EAD34030065F8BF /* QuadCurvedAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70147FFE1EAD34030065F8BF /* QuadCurvedAlgorithm.swift */; };
 		701480031EAD34AB0065F8BF /* HamsCurveChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701480011EAD34AB0065F8BF /* HamsCurveChart.swift */; };
@@ -14,13 +23,8 @@
 		701480061EAD35E00065F8BF /* HamsBackgoundStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701480051EAD35E00065F8BF /* HamsBackgoundStyle.swift */; };
 		701480081EAD36330065F8BF /* HamsIndexPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701480071EAD36330065F8BF /* HamsIndexPath.swift */; };
 		7014800B1EAD3FF40065F8BF /* ChartOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7014800A1EAD3FF40065F8BF /* ChartOffset.swift */; };
-		701480151EAD47A40065F8BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701480141EAD47A40065F8BF /* AppDelegate.swift */; };
-		701480171EAD47A40065F8BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701480161EAD47A40065F8BF /* ViewController.swift */; };
-		7014801A1EAD47A40065F8BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 701480181EAD47A40065F8BF /* Main.storyboard */; };
-		7014801C1EAD47A40065F8BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7014801B1EAD47A40065F8BF /* Assets.xcassets */; };
-		7014801F1EAD47A40065F8BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7014801D1EAD47A40065F8BF /* LaunchScreen.storyboard */; };
-		701480241EAD48630065F8BF /* HamsterUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709A437E1EA3262C0076CED4 /* HamsterUIKit.framework */; };
-		701480251EAD48630065F8BF /* HamsterUIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 709A437E1EA3262C0076CED4 /* HamsterUIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		706153231EAFA7B90078250E /* HamsBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706153221EAFA7B90078250E /* HamsBarChart.swift */; };
+		706153271EAFDA690078250E /* HamsBarChartRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706153261EAFDA690078250E /* HamsBarChartRect.swift */; };
 		709A43881EA3262C0076CED4 /* HamsterUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709A437E1EA3262C0076CED4 /* HamsterUIKit.framework */; };
 		709A438D1EA3262C0076CED4 /* HamsterUIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709A438C1EA3262C0076CED4 /* HamsterUIKitTests.swift */; };
 		709A438F1EA3262C0076CED4 /* HamsterUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 709A43811EA3262C0076CED4 /* HamsterUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -28,7 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		701480261EAD48630065F8BF /* PBXContainerItemProxy */ = {
+		7011FE1F1EB2ED0000157E9B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 709A43751EA3262C0076CED4 /* Project object */;
 			proxyType = 1;
@@ -45,13 +49,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		701480281EAD48630065F8BF /* Embed Frameworks */ = {
+		7011FE211EB2ED0000157E9B /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				701480251EAD48630065F8BF /* HamsterUIKit.framework in Embed Frameworks */,
+				7011FE1E1EB2ED0000157E9B /* HamsterUIKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -59,6 +63,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7011FE091EB2EC8F00157E9B /* HamsterUIKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HamsterUIKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7011FE0B1EB2EC8F00157E9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7011FE121EB2EC8F00157E9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7011FE151EB2EC8F00157E9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7011FE171EB2EC8F00157E9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7011FE1B1EB2EC9D00157E9B /* BarChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartViewController.swift; sourceTree = "<group>"; };
+		7011FE221EB2F4F700157E9B /* HamsLabelStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamsLabelStyle.swift; sourceTree = "<group>"; };
+		7011FE241EB39B3A00157E9B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7011FE271EB39B9000157E9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		70147FFD1EAD34030065F8BF /* ChartsCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsCore.swift; sourceTree = "<group>"; };
 		70147FFE1EAD34030065F8BF /* QuadCurvedAlgorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuadCurvedAlgorithm.swift; sourceTree = "<group>"; };
 		701480011EAD34AB0065F8BF /* HamsCurveChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamsCurveChart.swift; sourceTree = "<group>"; };
@@ -66,13 +79,8 @@
 		701480051EAD35E00065F8BF /* HamsBackgoundStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamsBackgoundStyle.swift; sourceTree = "<group>"; };
 		701480071EAD36330065F8BF /* HamsIndexPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamsIndexPath.swift; sourceTree = "<group>"; };
 		7014800A1EAD3FF40065F8BF /* ChartOffset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartOffset.swift; sourceTree = "<group>"; };
-		701480121EAD47A40065F8BF /* demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		701480141EAD47A40065F8BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		701480161EAD47A40065F8BF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		701480191EAD47A40065F8BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		7014801B1EAD47A40065F8BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7014801E1EAD47A40065F8BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		701480201EAD47A40065F8BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		706153221EAFA7B90078250E /* HamsBarChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamsBarChart.swift; sourceTree = "<group>"; };
+		706153261EAFDA690078250E /* HamsBarChartRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamsBarChartRect.swift; sourceTree = "<group>"; };
 		709A437E1EA3262C0076CED4 /* HamsterUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HamsterUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		709A43811EA3262C0076CED4 /* HamsterUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HamsterUIKit.h; sourceTree = "<group>"; };
 		709A43821EA3262C0076CED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,11 +91,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7014800F1EAD47A40065F8BF /* Frameworks */ = {
+		7011FE061EB2EC8F00157E9B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				701480241EAD48630065F8BF /* HamsterUIKit.framework in Frameworks */,
+				7011FE1D1EB2ED0000157E9B /* HamsterUIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,17 +117,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		701480131EAD47A40065F8BF /* demo */ = {
+		7011FE0A1EB2EC8F00157E9B /* HamsterUIKitExample */ = {
 			isa = PBXGroup;
 			children = (
-				701480141EAD47A40065F8BF /* AppDelegate.swift */,
-				701480161EAD47A40065F8BF /* ViewController.swift */,
-				701480181EAD47A40065F8BF /* Main.storyboard */,
-				7014801B1EAD47A40065F8BF /* Assets.xcassets */,
-				7014801D1EAD47A40065F8BF /* LaunchScreen.storyboard */,
-				701480201EAD47A40065F8BF /* Info.plist */,
+				7011FE0B1EB2EC8F00157E9B /* AppDelegate.swift */,
+				7011FE241EB39B3A00157E9B /* ViewController.swift */,
+				7011FE1B1EB2EC9D00157E9B /* BarChartViewController.swift */,
+				7011FE261EB39B9000157E9B /* Main.storyboard */,
+				7011FE121EB2EC8F00157E9B /* Assets.xcassets */,
+				7011FE141EB2EC8F00157E9B /* LaunchScreen.storyboard */,
+				7011FE171EB2EC8F00157E9B /* Info.plist */,
 			);
-			path = demo;
+			path = HamsterUIKitExample;
 			sourceTree = "<group>";
 		};
 		709A43741EA3262C0076CED4 = {
@@ -127,7 +136,7 @@
 			children = (
 				709A43801EA3262C0076CED4 /* HamsterUIKit */,
 				709A438B1EA3262C0076CED4 /* HamsterUIKitTests */,
-				701480131EAD47A40065F8BF /* demo */,
+				7011FE0A1EB2EC8F00157E9B /* HamsterUIKitExample */,
 				709A437F1EA3262C0076CED4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -137,7 +146,7 @@
 			children = (
 				709A437E1EA3262C0076CED4 /* HamsterUIKit.framework */,
 				709A43871EA3262C0076CED4 /* HamsterUIKitTests.xctest */,
-				701480121EAD47A40065F8BF /* demo.app */,
+				7011FE091EB2EC8F00157E9B /* HamsterUIKitExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -147,11 +156,14 @@
 			children = (
 				709A43981EA326F20076CED4 /* Libraries */,
 				709A43811EA3262C0076CED4 /* HamsterUIKit.h */,
+				706153261EAFDA690078250E /* HamsBarChartRect.swift */,
+				706153221EAFA7B90078250E /* HamsBarChart.swift */,
 				701480011EAD34AB0065F8BF /* HamsCurveChart.swift */,
 				701480021EAD34AB0065F8BF /* HamsCurveChartPoint.swift */,
 				709A43821EA3262C0076CED4 /* Info.plist */,
 				701480051EAD35E00065F8BF /* HamsBackgoundStyle.swift */,
 				701480071EAD36330065F8BF /* HamsIndexPath.swift */,
+				7011FE221EB2F4F700157E9B /* HamsLabelStyle.swift */,
 			);
 			path = HamsterUIKit;
 			sourceTree = "<group>";
@@ -190,23 +202,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		701480111EAD47A40065F8BF /* demo */ = {
+		7011FE081EB2EC8F00157E9B /* HamsterUIKitExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 701480211EAD47A40065F8BF /* Build configuration list for PBXNativeTarget "demo" */;
+			buildConfigurationList = 7011FE181EB2EC8F00157E9B /* Build configuration list for PBXNativeTarget "HamsterUIKitExample" */;
 			buildPhases = (
-				7014800E1EAD47A40065F8BF /* Sources */,
-				7014800F1EAD47A40065F8BF /* Frameworks */,
-				701480101EAD47A40065F8BF /* Resources */,
-				701480281EAD48630065F8BF /* Embed Frameworks */,
+				7011FE051EB2EC8F00157E9B /* Sources */,
+				7011FE061EB2EC8F00157E9B /* Frameworks */,
+				7011FE071EB2EC8F00157E9B /* Resources */,
+				7011FE211EB2ED0000157E9B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				701480271EAD48630065F8BF /* PBXTargetDependency */,
+				7011FE201EB2ED0000157E9B /* PBXTargetDependency */,
 			);
-			name = demo;
-			productName = demo;
-			productReference = 701480121EAD47A40065F8BF /* demo.app */;
+			name = HamsterUIKitExample;
+			productName = HamsterUIKitExample;
+			productReference = 7011FE091EB2EC8F00157E9B /* HamsterUIKitExample.app */;
 			productType = "com.apple.product-type.application";
 		};
 		709A437D1EA3262C0076CED4 /* HamsterUIKit */ = {
@@ -255,7 +267,7 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Howard Wang";
 				TargetAttributes = {
-					701480111EAD47A40065F8BF = {
+					7011FE081EB2EC8F00157E9B = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = Q5YD476ZAX;
 						ProvisioningStyle = Automatic;
@@ -288,19 +300,19 @@
 			targets = (
 				709A437D1EA3262C0076CED4 /* HamsterUIKit */,
 				709A43861EA3262C0076CED4 /* HamsterUIKitTests */,
-				701480111EAD47A40065F8BF /* demo */,
+				7011FE081EB2EC8F00157E9B /* HamsterUIKitExample */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		701480101EAD47A40065F8BF /* Resources */ = {
+		7011FE071EB2EC8F00157E9B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7014801F1EAD47A40065F8BF /* LaunchScreen.storyboard in Resources */,
-				7014801C1EAD47A40065F8BF /* Assets.xcassets in Resources */,
-				7014801A1EAD47A40065F8BF /* Main.storyboard in Resources */,
+				7011FE281EB39B9000157E9B /* Main.storyboard in Resources */,
+				7011FE161EB2EC8F00157E9B /* LaunchScreen.storyboard in Resources */,
+				7011FE131EB2EC8F00157E9B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,12 +333,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		7014800E1EAD47A40065F8BF /* Sources */ = {
+		7011FE051EB2EC8F00157E9B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				701480171EAD47A40065F8BF /* ViewController.swift in Sources */,
-				701480151EAD47A40065F8BF /* AppDelegate.swift in Sources */,
+				7011FE0C1EB2EC8F00157E9B /* AppDelegate.swift in Sources */,
+				7011FE251EB39B3A00157E9B /* ViewController.swift in Sources */,
+				7011FE1C1EB2EC9D00157E9B /* BarChartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,8 +350,11 @@
 				709A43A81EA3AECA0076CED4 /* Extension.swift in Sources */,
 				701480061EAD35E00065F8BF /* HamsBackgoundStyle.swift in Sources */,
 				701480041EAD34AB0065F8BF /* HamsCurveChartPoint.swift in Sources */,
+				706153271EAFDA690078250E /* HamsBarChartRect.swift in Sources */,
+				7011FE231EB2F4F700157E9B /* HamsLabelStyle.swift in Sources */,
 				701480081EAD36330065F8BF /* HamsIndexPath.swift in Sources */,
 				70147FFF1EAD34030065F8BF /* ChartsCore.swift in Sources */,
+				706153231EAFA7B90078250E /* HamsBarChart.swift in Sources */,
 				7014800B1EAD3FF40065F8BF /* ChartOffset.swift in Sources */,
 				701480001EAD34030065F8BF /* QuadCurvedAlgorithm.swift in Sources */,
 				701480031EAD34AB0065F8BF /* HamsCurveChart.swift in Sources */,
@@ -356,10 +372,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		701480271EAD48630065F8BF /* PBXTargetDependency */ = {
+		7011FE201EB2ED0000157E9B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 709A437D1EA3262C0076CED4 /* HamsterUIKit */;
-			targetProxy = 701480261EAD48630065F8BF /* PBXContainerItemProxy */;
+			targetProxy = 7011FE1F1EB2ED0000157E9B /* PBXContainerItemProxy */;
 		};
 		709A438A1EA3262C0076CED4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -369,54 +385,52 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		701480181EAD47A40065F8BF /* Main.storyboard */ = {
+		7011FE141EB2EC8F00157E9B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				701480191EAD47A40065F8BF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		7014801D1EAD47A40065F8BF /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7014801E1EAD47A40065F8BF /* Base */,
+				7011FE151EB2EC8F00157E9B /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		7011FE261EB39B9000157E9B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7011FE271EB39B9000157E9B /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		701480221EAD47A40065F8BF /* Debug */ = {
+		7011FE191EB2EC8F00157E9B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Q5YD476ZAX;
-				INFOPLIST_FILE = demo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				INFOPLIST_FILE = HamsterUIKitExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = howard.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = howard.HamsterUIKitExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
-		701480231EAD47A40065F8BF /* Release */ = {
+		7011FE1A1EB2EC8F00157E9B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Q5YD476ZAX;
-				INFOPLIST_FILE = demo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				INFOPLIST_FILE = HamsterUIKitExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = howard.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = howard.HamsterUIKitExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -537,7 +551,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = howard.HamsterUIKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = NO;
+				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -559,7 +573,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = howard.HamsterUIKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = NO;
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -593,14 +607,13 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		701480211EAD47A40065F8BF /* Build configuration list for PBXNativeTarget "demo" */ = {
+		7011FE181EB2EC8F00157E9B /* Build configuration list for PBXNativeTarget "HamsterUIKitExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				701480221EAD47A40065F8BF /* Debug */,
-				701480231EAD47A40065F8BF /* Release */,
+				7011FE191EB2EC8F00157E9B /* Debug */,
+				7011FE1A1EB2EC8F00157E9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 		709A43781EA3262C0076CED4 /* Build configuration list for PBXProject "HamsterUIKit" */ = {
 			isa = XCConfigurationList;
