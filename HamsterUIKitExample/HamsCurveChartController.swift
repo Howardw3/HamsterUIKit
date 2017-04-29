@@ -3,7 +3,8 @@
 import UIKit
 import HamsterUIKit
 
-class HamsController:UIViewController, HamsCurveChartDelegate, HamsCurveChartDataSource {
+class HamsCurveChartController:UIViewController, HamsCurveChartDelegate, HamsCurveChartDataSource {
+
 	let redDark = UIColor(hue: 353/360, saturation: 73/100, brightness: 100/100, alpha: 1)
 	let red = UIColor(hue: 345/360, saturation: 30/100, brightness: 100/100, alpha: 1)
 	let blue = UIColor(hue: 216/360, saturation: 38/100, brightness: 83/100, alpha: 1)
@@ -12,13 +13,13 @@ class HamsController:UIViewController, HamsCurveChartDelegate, HamsCurveChartDat
 	                [0, 60, 20, 0],
 	                [30, 60, 1, 0],
 	                [0, 0, 0, 0]]
-	var table: UITableView!
-	var hamsCurveChart = HamsCurveChart(frame: CGRect(origin: CGPoint(x:0, y: 50), size: CGSize(width: 375, height: 200)))
+	
+	@IBOutlet weak var hamsCurveChart: HamsCurveChart!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-//		hamsCurveChart = HamsCurveChart(frame: view.frame)
-		hamsCurveChart.offsets = ChartOffset(top: 65, bottom: 60, column: 0, horizon: 0)
+
+		
 		hamsCurveChart.delegate = self
 		hamsCurveChart.dataSource = self
 		self.view.addSubview(hamsCurveChart)
@@ -31,19 +32,20 @@ class HamsController:UIViewController, HamsCurveChartDelegate, HamsCurveChartDat
 		hamsCurveChart.reloadData()
 	}
 	
-	func curveChart(_ curveChart: HamsCurveChart, configureForViews view: Int) {
+	func curveChart(_ curveChart: HamsCurveChart, configureForCharts view: Int) {
+		hamsCurveChart.offsets = ChartOffset(top: 0, bottom: 60, column: 0, horizon: 0)
 		switch view {
 		case 0:
-			hamsCurveChart.filledColor = .gradient(top: redDark, bottom: red)
+			hamsCurveChart.filledStyle = .gradient(top: redDark, bottom: red)
 			hamsCurveChart.startPoint = .zero
 			hamsCurveChart.suggestValue = 900
 		case 1:
 			
-			hamsCurveChart.filledColor = .plain(blue)
+			hamsCurveChart.filledStyle = .plain(blue)
 			hamsCurveChart.maxValue = 50
 			hamsCurveChart.pageIndicatorTintColor = UIColor(hue: 336, saturation: 19, brightness: 100, alpha: 1)
 		case 2:
-			hamsCurveChart.filledColor = .plain(redDark)
+			hamsCurveChart.filledStyle = .plain(redDark)
 			hamsCurveChart.suggestValue = 100
 		case 3: break
 		default:break
@@ -70,10 +72,11 @@ class HamsController:UIViewController, HamsCurveChartDelegate, HamsCurveChartDat
 		return point
 	}
 	
-	func curveChart(_ curveChart: HamsCurveChart, numberOfPointsInView view: Int) -> Int {
+	func curveChart(_ curveChart: HamsCurveChart, numberOfValuesInChart view: Int) -> Int {
 		return dataSets[view].count
 	}
-	func numberOfViews(in tableView: HamsCurveChart) -> Int {
+	
+	func numberOfCharts(in curveChart: HamsCurveChart) -> Int {
 		return 4
 	}
 }

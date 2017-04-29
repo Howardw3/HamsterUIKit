@@ -14,8 +14,9 @@
 		7011FE1D1EB2ED0000157E9B /* HamsterUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709A437E1EA3262C0076CED4 /* HamsterUIKit.framework */; };
 		7011FE1E1EB2ED0000157E9B /* HamsterUIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 709A437E1EA3262C0076CED4 /* HamsterUIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7011FE231EB2F4F700157E9B /* HamsLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7011FE221EB2F4F700157E9B /* HamsLabelStyle.swift */; };
-		7011FE251EB39B3A00157E9B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7011FE241EB39B3A00157E9B /* ViewController.swift */; };
+		7011FE251EB39B3A00157E9B /* HamsCurveChartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7011FE241EB39B3A00157E9B /* HamsCurveChartController.swift */; };
 		7011FE281EB39B9000157E9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7011FE261EB39B9000157E9B /* Main.storyboard */; };
+		7011FE2C1EB4036700157E9B /* HamsChartBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7011FE2B1EB4036700157E9B /* HamsChartBase.swift */; };
 		70147FFF1EAD34030065F8BF /* ChartsCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70147FFD1EAD34030065F8BF /* ChartsCore.swift */; };
 		701480001EAD34030065F8BF /* QuadCurvedAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70147FFE1EAD34030065F8BF /* QuadCurvedAlgorithm.swift */; };
 		701480031EAD34AB0065F8BF /* HamsCurveChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701480011EAD34AB0065F8BF /* HamsCurveChart.swift */; };
@@ -70,8 +71,9 @@
 		7011FE171EB2EC8F00157E9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7011FE1B1EB2EC9D00157E9B /* BarChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartViewController.swift; sourceTree = "<group>"; };
 		7011FE221EB2F4F700157E9B /* HamsLabelStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamsLabelStyle.swift; sourceTree = "<group>"; };
-		7011FE241EB39B3A00157E9B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7011FE241EB39B3A00157E9B /* HamsCurveChartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamsCurveChartController.swift; sourceTree = "<group>"; };
 		7011FE271EB39B9000157E9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7011FE2B1EB4036700157E9B /* HamsChartBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamsChartBase.swift; sourceTree = "<group>"; };
 		70147FFD1EAD34030065F8BF /* ChartsCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsCore.swift; sourceTree = "<group>"; };
 		70147FFE1EAD34030065F8BF /* QuadCurvedAlgorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuadCurvedAlgorithm.swift; sourceTree = "<group>"; };
 		701480011EAD34AB0065F8BF /* HamsCurveChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamsCurveChart.swift; sourceTree = "<group>"; };
@@ -121,7 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				7011FE0B1EB2EC8F00157E9B /* AppDelegate.swift */,
-				7011FE241EB39B3A00157E9B /* ViewController.swift */,
+				7011FE241EB39B3A00157E9B /* HamsCurveChartController.swift */,
 				7011FE1B1EB2EC9D00157E9B /* BarChartViewController.swift */,
 				7011FE261EB39B9000157E9B /* Main.storyboard */,
 				7011FE121EB2EC8F00157E9B /* Assets.xcassets */,
@@ -164,6 +166,7 @@
 				701480051EAD35E00065F8BF /* HamsBackgoundStyle.swift */,
 				701480071EAD36330065F8BF /* HamsIndexPath.swift */,
 				7011FE221EB2F4F700157E9B /* HamsLabelStyle.swift */,
+				7011FE2B1EB4036700157E9B /* HamsChartBase.swift */,
 			);
 			path = HamsterUIKit;
 			sourceTree = "<group>";
@@ -338,7 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7011FE0C1EB2EC8F00157E9B /* AppDelegate.swift in Sources */,
-				7011FE251EB39B3A00157E9B /* ViewController.swift in Sources */,
+				7011FE251EB39B3A00157E9B /* HamsCurveChartController.swift in Sources */,
 				7011FE1C1EB2EC9D00157E9B /* BarChartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -351,6 +354,7 @@
 				701480061EAD35E00065F8BF /* HamsBackgoundStyle.swift in Sources */,
 				701480041EAD34AB0065F8BF /* HamsCurveChartPoint.swift in Sources */,
 				706153271EAFDA690078250E /* HamsBarChartRect.swift in Sources */,
+				7011FE2C1EB4036700157E9B /* HamsChartBase.swift in Sources */,
 				7011FE231EB2F4F700157E9B /* HamsLabelStyle.swift in Sources */,
 				701480081EAD36330065F8BF /* HamsIndexPath.swift in Sources */,
 				70147FFF1EAD34030065F8BF /* ChartsCore.swift in Sources */,
