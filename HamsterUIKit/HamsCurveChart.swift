@@ -10,13 +10,13 @@ import UIKit
 
 public protocol HamsCurveChartDataSource{
 	func curveChart(_ curveChart: HamsCurveChart, pointForChart indexPath: HamsIndexPath) -> HamsCurveChartPoint
-	func numberOfViews(in curveChart: HamsCurveChart) -> Int
+	func numberOfCharts(in curveChart: HamsCurveChart) -> Int
 	
-	func curveChart(_ curveChart: HamsCurveChart, numberOfPointsInView view: Int) -> Int
+	func curveChart(_ curveChart: HamsCurveChart, numberOfValuesInChart chart: Int) -> Int
 }
 
 public protocol HamsCurveChartDelegate {
-	func curveChart(_ curveChart: HamsCurveChart, configureForViews view: Int)
+	func curveChart(_ curveChart: HamsCurveChart, configureForCharts chart: Int)
 }
 
 public enum EndpointType {
@@ -28,21 +28,11 @@ public enum EndpointType {
 	case average(CGFloat, CGFloat)
 }
 
-open class HamsCurveChart: UIControl {
+open class HamsCurveChart: HamsChartBase {
 	
 	fileprivate var maximum:CGFloat = 0
 	fileprivate var labelWidth:CGFloat = 0
-	fileprivate var pageControl = UIPageControl()
-	fileprivate var touchedPoint:CGPoint = CGPoint.zero
-	fileprivate var numberOfPoints = 0
-	fileprivate var isDataEmpty = false
-	fileprivate var labels = [String]()
-	fileprivate var currentView: Int = 0
-	fileprivate let swipeGestureLeft = UISwipeGestureRecognizer()
-	fileprivate let swipeGestureRight = UISwipeGestureRecognizer()
-	fileprivate var graphPoints = [CGFloat]()
-	fileprivate var defaultColor: UIColor!
-	
+	fileprivate var quadCurve: QuadCurveAlgorithm!
 	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 		setup()
@@ -63,12 +53,6 @@ open class HamsCurveChart: UIControl {
 	open var startPoint:EndpointType!
 	open var endPoint:EndpointType!
 	
-	open var filledColor: HamsBackgoundStyle?
-	open var labelsColor: UIColor!
-	open var pointColor: UIColor!
-	open var offsets: ChartOffset!
-	open var pageIndicatorTintColor:UIColor?
-	open var labelStyle: HamsLabelStyle!
 	open var suggestValue: Int = 0 {
 		didSet{
 			if suggestValue > 0 {
@@ -77,15 +61,14 @@ open class HamsCurveChart: UIControl {
 		}
 	}
 	
-	fileprivate func initialize() {
+	override func configure() {
+		super.configure()
 		startPoint = .auto
 		endPoint = .auto
-		labelsColor = UIColor(red: 0.53, green: 0.55, blue: 0.56, alpha: 1.0)
-		pointColor = UIColor(red: 0.53, green: 0.55, blue: 0.56, alpha: 1.0)
-		offsets = ChartOffset(top: 90, bottom: 40, column: 0, horizon: 0)
-		labelStyle = .week
 		suggestValue = 0
-		filledColor = .plain(defaultColor)
+		titleColor = .black
+//		offsets = ChartOffset(top: 0, bottom: 0, column: 30, horizon: 50)
+		labelsColor = .black
 	}
 	
 	open var maxValue:CGFloat {
@@ -96,78 +79,50 @@ open class HamsCurveChart: UIControl {
 		} get { return maximum }
 	}
 	
-	open var numberOfViews: Int { return dataSource!.numberOfViews(in: self)}
+	open override var numberOfCharts: Int {
+		return dataSource!.numberOfCharts(in: self)
+	}
 	
-	open func reloadData() {
+	open override func reloadData() {
 		if dataSource != nil {
-			self.initialize()
+			self.configure()
 			self.update()
 			self.setNeedsDisplay()
 		}
 	}
 	
-	open func numberOfPoints(in view: Int) -> Int {
-		guard let count = dataSource?.curveChart(self, numberOfPointsInView: view) else { return 0 }
+	open override func numberOfValues(in chart: Int) -> Int {
+		guard let count = dataSource?.curveChart(self, numberOfValuesInChart: chart) else { return 0 }
 		return count
 	}
 	
-	
-	fileprivate func setup() {
+	override func update() {
+		delegate?.curveChart(self, configureForCharts: currentChart)
+		super.update()
 		
-		self.backgroundColor = .clear
-		defaultColor = UIColor(red: 0.99, green: 0.30, blue: 0.03, alpha: 1.0)
-		
-		pageControl.translatesAutoresizingMaskIntoConstraints = false
-		self.addSubview(pageControl)
-		pageControl.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-		pageControl.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-		pageControl.widthAnchor.constraint(equalToConstant: 50).isActive = true
-		
-		self.swipeGestureLeft.direction = .left
-		self.swipeGestureRight.direction = .right
-		
-		// add gesture target
-		self.swipeGestureLeft.addTarget(self, action: #selector(handleSwipeLeft(_:)))
-		self.swipeGestureRight.addTarget(self, action: #selector(handleSwipeRight(_:)))
-		
-		// add gesture into view
-		self.addGestureRecognizer(self.swipeGestureLeft)
-		self.addGestureRecognizer(self.swipeGestureRight)
-		
-	}
-	
-	fileprivate func update() {
-		
-		pageControl.numberOfPages = numberOfViews
-		graphPoints = []
-		numberOfPoints = numberOfPoints(in: currentView)
-
-		labels = labelStyle.labels(length: numberOfPoints)
-		if numberOfPoints > 0 {
-			for i in 0..<numberOfPoints(in: currentView) {
-				let curveChartPoint = dataSource?.curveChart(self, pointForChart: HamsIndexPath(column: i, view: currentView))
-				graphPoints.append((curveChartPoint?.pointValue)!)
+		if numberOfValues > 0 {
+			for i in 0..<numberOfValues(in: currentChart) {
+				let curveChartPoint = dataSource?.curveChart(self, pointForChart: HamsIndexPath(column: i, view: currentChart))
+				chartValues.append((curveChartPoint?.pointValue)!)
 			}
-			if graphPoints.max() == 0 {
+			if chartValues.max() == 0 {
 				isDataEmpty = true
 			} else {
 				isDataEmpty = false
 			}
 		} else {
-			graphPoints = [0, 0]
+			chartValues = [0, 0]
 			isDataEmpty = true
 		}
 		
-		delegate?.curveChart(self, configureForViews: currentView)
-		
 		if let val = value(type: startPoint, left: true) {
-			graphPoints = [val] + graphPoints
+			chartValues = [val] + chartValues
 		}
 		
 		if let val = value(type: endPoint, left: false) {
-			graphPoints = graphPoints + [val]
+			chartValues = chartValues + [val]
 		}
-		numberOfPoints = graphPoints.count
+		numberOfValues = chartValues.count
 	}
 	
 	override open func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
@@ -179,11 +134,14 @@ open class HamsCurveChart: UIControl {
 	
 	override open func draw(_ rect: CGRect) {
 		
-		removeLabel()
 		let context = UIGraphicsGetCurrentContext()
 		pageControl.pageIndicatorTintColor = pageIndicatorTintColor
-		
-		let quadCurve = QuadCurveAlgorithm(with: graphPoints, frameSize: frame.size, offsets: offsets)
+
+		let contentOffsets = ChartOffset(top: offsets.top + chartHeaderHeight,
+		                                 bottom: offsets.bottom + chartFooterHeight,
+		                                 column: offsets.column,
+		                                 horizon: offsets.horizon)
+		let quadCurve = QuadCurveAlgorithm(with: chartValues, frameSize: frame.size, offsets: contentOffsets)
 		
 		quadCurve.maxValue = maximum
 		
@@ -252,11 +210,8 @@ open class HamsCurveChart: UIControl {
 		let height = frame.height
 		
 		let graphPath = quadCurve.quadCurvePath
-		
-		
-		
 		graphPath.addLine(to: CGPoint(
-			x: quadCurve.getX(by: graphPoints.count - 1),
+			x: quadCurve.getX(by: chartValues.count - 1),
 			y:height))
 		graphPath.addLine(to: CGPoint(
 			x:quadCurve.getX(by: 0),
@@ -264,7 +219,7 @@ open class HamsCurveChart: UIControl {
 		graphPath.close()
 		
 		
-		switch filledColor! {
+		switch filledStyle! {
 		case .gradient(let top,let bottom):
 			defaultColor = top
 			ctx.saveGState()
@@ -296,24 +251,10 @@ open class HamsCurveChart: UIControl {
 		
 	}
 	
-	fileprivate func removeLabel(tag: Int) {
-		for sub in self.subviews {
-			if sub.tag == tag {
-				sub.removeFromSuperview()
-			}
-		}
-	}
-	
-	fileprivate func removeLabel() {
-		for subview in self.subviews {
-			if subview is UILabel {
-				subview.removeFromSuperview()
-			}
-		}
-	}
+
 	
 	fileprivate func drawPoint(ctx: CGContext, quadCurve: QuadCurveAlgorithm) {
-		var start = 0, end = numberOfPoints
+		var start = 0, end = numberOfValues
 		if (value(type: startPoint) != nil){
 			start = 1
 		}
@@ -325,7 +266,7 @@ open class HamsCurveChart: UIControl {
 
 			if !isDataEmpty {
 				let ind = i - start
-				let curveChartPoint = dataSource?.curveChart(self, pointForChart: HamsIndexPath(column: ind, view: currentView))
+				let curveChartPoint = dataSource?.curveChart(self, pointForChart: HamsIndexPath(column: ind, view: currentChart))
 				
 				let outerCircle = drawOuterCircle(ctx: ctx, point: point, curveChartPoint: curveChartPoint!)
 				
@@ -340,7 +281,7 @@ open class HamsCurveChart: UIControl {
 					removeLabel(tag: 12138)
 					// add touched label
 					let pointValueLabel = UILabel(frame: CGRect(x: point.x - labelWidth / 2, y: point.y-8-7-10, width: labelWidth, height: 14))
-					pointValueLabel.text = "\(Int(graphPoints[i]))"
+					pointValueLabel.text = "\(Int(chartValues[i]))"
 					pointValueLabel.font = UIFont.systemFont(ofSize: 12)
 					pointValueLabel.textAlignment = .center
 					pointValueLabel.tag = 12138
@@ -349,7 +290,6 @@ open class HamsCurveChart: UIControl {
 					
 				}
 			}
-			
 			drawLabels(column: i, point: point)
 			
 		}
@@ -385,85 +325,22 @@ open class HamsCurveChart: UIControl {
 	}
 	
 	fileprivate func drawLabels(column i:Int, point: CGPoint) {
-		let label = UILabel(frame: CGRect( x: point.x - labelWidth / 2, y: 0, width: labelWidth, height: 24))
+		let label = UILabel(frame: CGRect( x: point.x - labelWidth / 2, y: chartHeaderHeight - 10, width: labelWidth, height: 10))
 		label.text = "\(labels[i-1])"
 		label.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightLight)
-		label.tag = i+2000
 		label.textColor = labelsColor
 		label.textAlignment = .center
+		label.tag = i+2000
 		self.addSubview(label)
-	}
-	
-	fileprivate func capture() -> UIImageView {
-		let renderer = UIGraphicsImageRenderer(size: self.bounds.size)
-		let image = renderer.image { ctx in
-			self.drawHierarchy(in: self.bounds, afterScreenUpdates: true)
-		}
-		
-		return UIImageView(image: image)
-	}
-	
-	// increase page number
-	@objc fileprivate func handleSwipeLeft(_ gesture: UISwipeGestureRecognizer) {
-		if self.pageControl.currentPage < numberOfViews - 1 {
-			self.pageControl.currentPage += 1
-			currentView = pageControl.currentPage
-			
-			let imageView = self.capture()
-			imageView.frame = self.frame
-			superview?.addSubview(imageView)
-			self.center.x += self.frame.width
-			
-			reloadData()
-			UIView.animate(withDuration: 0.5, animations: {
-				imageView.center.x -= self.frame.width
-				self.center.x -= self.frame.width
-			})
-		} else {
-			UIView.animate(withDuration: 0.5, animations: {
-				self.center.x -= 50
-			}, completion: {(f) in
-				self.center.x += 50
-			})
-		}
-	}
-	
-	// reduce page number
-	@objc fileprivate func handleSwipeRight(_ gesture: UISwipeGestureRecognizer) {
-		
-		
-		if self.pageControl.currentPage != 0 {
-			self.pageControl.currentPage -= 1
-			currentView = pageControl.currentPage
-			
-			let imageView = self.capture()
-			imageView.frame = self.frame
-			superview?.addSubview(imageView)
-			self.center.x -= self.frame.width
-			
-			reloadData()
-			UIView.animate(withDuration: 0.5, animations: {
-				imageView.center.x += self.frame.width
-				self.center.x += self.frame.width
-			})
-		} else {
-			UIView.animate(withDuration: 0.5, animations: {
-				self.center.x += 50
-			}, completion: {(f) in
-				self.center.x -= 50
-			})
-		}
-		
-		
 	}
 	
 	fileprivate func value(type: EndpointType, left: Bool = true) -> CGFloat? {
 		switch type {
 		case .auto:
 			if left {
-				return (graphPoints[0] + graphPoints[1]) / 2
+				return (chartValues[0] + chartValues[1]) / 2
 			} else {
-				return (graphPoints[back: 1] + graphPoints[back: 2]) / 2
+				return (chartValues[back: 1] + chartValues[back: 2]) / 2
 			}
 		case .zero:
 			return 0

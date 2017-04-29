@@ -1,0 +1,220 @@
+//
+//  HamsChartBase.swift
+//  HamsterUIKit
+//
+//  Created by Drake on 4/28/17.
+//  Copyright © 2017 Howard Wang. All rights reserved.
+//
+
+import Foundation
+
+open class HamsChartBase:UIControl {
+	
+	/// page control in footer
+	var pageControl = UIPageControl()
+	
+	/// touched point record for showing label or view
+	var touchedPoint:CGPoint = CGPoint.zero
+	
+	/// total of values
+	var numberOfValues = 0
+	
+	/// default is false
+	var isDataEmpty = false
+	
+	/// description for each column
+	var labels = [String]()
+	
+	/// current number of chart
+	var currentChart: Int = 0
+	
+	/// from right to left
+	let swipeGestureLeft = UISwipeGestureRecognizer()
+	
+	/// from left to right
+	let swipeGestureRight = UISwipeGestureRecognizer()
+	
+	/// chart data, only support positive value right now
+	var chartValues = [CGFloat]()
+	
+	/// default color for backgroud and some conponents
+	///
+	var defaultColor: UIColor!
+	
+	/// position when value = 0. 
+	/// default is frame.height - chartFooterHeight - 10
+	var base: CGFloat = 0
+	
+	///
+	open var filledStyle: HamsBackgoundStyle?
+	open var offsets: ChartOffset!
+	open var pageIndicatorTintColor:UIColor?
+	open var labelStyle: HamsLabelStyle!
+	open var chartHeaderHeight: CGFloat!
+	open var chartFooterHeight: CGFloat! {
+		didSet {
+			base = frame.height - chartFooterHeight - 10
+		}
+	}
+	
+	open var title:String = "Title"
+	open var titleColor:UIColor = .white
+	open var labelsColor: UIColor = .white
+	
+	func configure(){
+		removeLabel()
+		chartHeaderHeight = frame.height/5 + 20
+		chartFooterHeight = frame.height/5
+		title = "Title"
+		titleColor = .white
+		offsets = ChartOffset(top: 0, bottom: 0, column: 30, horizon: 50)
+		labelStyle = .week
+		labelsColor = .white
+		filledStyle = .plain(defaultColor)
+		
+		pageControl.widthAnchor.constraint(equalToConstant: chartFooterHeight+5).isActive = true
+	}
+	
+	func setTitle() {
+		let titleLabel = UILabel(frame: CGRect( x: 0, y: chartHeaderHeight-39, width: frame.width, height: 29))
+		titleLabel.text = title
+		titleLabel.font = UIFont.systemFont(ofSize: 24, weight: UIFontWeightSemibold)
+		titleLabel.adjustsFontSizeToFitWidth = true
+		titleLabel.textColor = titleColor
+		titleLabel.textAlignment = .center
+		
+		self.addSubview(titleLabel)
+	}
+	
+	
+	open var numberOfCharts: Int { return 0 }
+
+	open func numberOfValues(in chart: Int) -> Int { return 0 }
+	
+	open func reloadData() { }
+	
+	func update() {
+		pageControl.numberOfPages = numberOfCharts
+		chartValues = []
+		numberOfValues = numberOfValues(in: currentChart)
+		setTitle()
+		labels = labelStyle.labels(length: numberOfValues)
+		
+		if numberOfCharts > 1 {
+			pageControl.isHidden = false
+			pageControl.isEnabled = false
+		} else {
+			pageControl.isHidden = true
+			pageControl.isEnabled = true
+		}
+	}
+	
+	func setup() {
+		
+		self.backgroundColor = .clear
+		defaultColor = UIColor(red: 0.99, green: 0.30, blue: 0.03, alpha: 1.0)
+		
+		pageControl.translatesAutoresizingMaskIntoConstraints = false
+		self.addSubview(pageControl)
+		pageControl.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+		pageControl.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+		
+		
+		self.swipeGestureLeft.direction = .left
+		self.swipeGestureRight.direction = .right
+		
+		// add gesture target
+		self.swipeGestureLeft.addTarget(self, action: #selector(handleSwipeLeft(_:)))
+		self.swipeGestureRight.addTarget(self, action: #selector(handleSwipeRight(_:)))
+		
+		// add gesture into view
+		self.addGestureRecognizer(self.swipeGestureLeft)
+		self.addGestureRecognizer(self.swipeGestureRight)
+		
+		
+		configure()
+	}
+	
+	func removeLabel(tag: Int) {
+		for sub in self.subviews {
+			if sub.tag == tag {
+				sub.removeFromSuperview()
+			}
+		}
+	}
+	
+	func removeLabel() {
+		for subview in self.subviews {
+			if subview is UILabel {
+				subview.removeFromSuperview()
+			}
+		}
+	}
+	
+	/// capture a screenshot by
+	func capture() -> UIImageView {
+		let renderer = UIGraphicsImageRenderer(size: self.bounds.size)
+		let image = renderer.image { ctx in
+			self.drawHierarchy(in: self.bounds, afterScreenUpdates: true)
+		}
+		
+		return UIImageView(image: image)
+	}
+	
+	/// increase page number
+	///	trigger animation from left to right
+	@objc func handleSwipeLeft(_ gesture: UISwipeGestureRecognizer) {
+		if self.pageControl.currentPage < numberOfCharts - 1 {
+			self.pageControl.currentPage += 1
+			currentChart = pageControl.currentPage
+			
+			//	capture a screenshot for trisition
+			let imageView = self.capture()
+			imageView.frame = self.frame
+			superview?.addSubview(imageView)
+			self.center.x += self.frame.width
+			
+			reloadData()
+			UIView.animate(withDuration: 0.5, animations: {
+				imageView.center.x -= self.frame.width
+				self.center.x -= self.frame.width
+			})
+		} else { //
+			UIView.animate(withDuration: 0.5, animations: {
+				self.center.x -= 50
+			}, completion: {(f) in
+				self.center.x += 50
+			})
+		}
+	}
+	
+	/// reduce page number
+	///	trigger animation from right to left
+	@objc func handleSwipeRight(_ gesture: UISwipeGestureRecognizer) {
+		if self.pageControl.currentPage != 0 {
+			self.pageControl.currentPage -= 1
+			currentChart = pageControl.currentPage
+			
+			//	capture a screenshot for trisition
+			let imageView = self.capture()
+			imageView.frame = self.frame
+			superview?.addSubview(imageView)
+			self.center.x -= self.frame.width
+			
+			reloadData()
+			UIView.animate(withDuration: 0.5, animations: {
+				imageView.center.x += self.frame.width
+				self.center.x += self.frame.width
+			})
+		} else {
+			UIView.animate(withDuration: 0.5, animations: {
+				self.center.x += 50
+			}, completion: {(f) in
+				self.center.x -= 50
+			})
+		}
+		
+		
+	}
+
+}

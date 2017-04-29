@@ -24,17 +24,13 @@ class BarChartViewController: UIViewController, HamsBarChartDelegate, HamsBarCha
 	let barBlue = UIColor(red: 0.35, green: 0.46, blue: 0.73, alpha: 1)
 	let barGrey = UIColor(red: 0.69, green: 0.66, blue: 0.58, alpha: 1)
 	let barYellow = UIColor(red: 0.88, green: 0.63, blue: 0.27, alpha: 1)
+	let base = HamsChartBase()
 	
-	var simpleBarChart:HamsBarChart!
-	var groupedBarChart:HamsBarChart!
-	var stackedBarChart: HamsBarChart!
-	
+	@IBOutlet weak var stackedBarChart: HamsBarChart!
+	@IBOutlet weak var groupedBarChart: HamsBarChart!
+	@IBOutlet weak var simpleBarChart: HamsBarChart!
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-		simpleBarChart = HamsBarChart(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.width/2))
-		groupedBarChart = HamsBarChart(frame: CGRect(x: 0, y: view.frame.width/2 + 40, width: view.frame.width, height: view.frame.width/2))
-		stackedBarChart = HamsBarChart(frame: CGRect(x: 0, y: view.frame.width/2*2 + 40*2, width: view.frame.width, height: view.frame.width/2))
 		
 		simpleBarChart.delegate = self
 		simpleBarChart.dataSource = self
@@ -44,7 +40,7 @@ class BarChartViewController: UIViewController, HamsBarChartDelegate, HamsBarCha
 		
 		stackedBarChart.delegate = self
 		stackedBarChart.dataSource = self
-		
+
 		self.view.addSubview(simpleBarChart)
 		self.view.addSubview(groupedBarChart)
 		self.view.addSubview(stackedBarChart)
@@ -61,11 +57,11 @@ class BarChartViewController: UIViewController, HamsBarChartDelegate, HamsBarCha
 		stackedBarChart.reloadData()
 	}
 	
-	func barChart(_ barChart: HamsBarChart, numberOfPointsInView view: Int) -> Int {
+	func barChart(_ barChart: HamsBarChart, numberOfValuesInChart view: Int) -> Int {
 		return dataSets.count
 	}
 	
-	func numberOfViews(in barChart: HamsBarChart) -> Int {
+	func numberOfCharts(in barChart: HamsBarChart) -> Int {
 		if barChart == simpleBarChart {
 			return 2
 		}
@@ -82,40 +78,47 @@ class BarChartViewController: UIViewController, HamsBarChartDelegate, HamsBarCha
 				rect.color = .plain(.white)
 			case 1:
 				rect.value = .plain(dataSets[indexPath.column])
-				rect.color = .randomed([.red, .white, .cyan, .black])
+				rect.color = .randomed([barRed, barBlue, barGrey, .white])
 			default: break
 			}
 			
 		}
 		
 		if barChart == groupedBarChart {
-			rect.value = .stacked(dataSets1[indexPath.column])
+			rect.value = .grouped(dataSets1[indexPath.column])
 			rect.color = .arranged([barRed, barBlue, barGrey])
 		}
 		
 		if barChart == stackedBarChart {
-			rect.value = .grouped(dataSets1[indexPath.column])
+			rect.value = .stacked(dataSets1[indexPath.column])
 			rect.color = .arranged([barRed, barBlue, barGrey])
 		}
 
 		return rect
 	}
 	
-	func barChart(_ barChart: HamsBarChart, configureForViews view: Int) {
-		simpleBarChart.offsets = ChartOffset(top: 0, bottom: 0, column: 30, horizon: 50)
-		groupedBarChart.offsets = ChartOffset(top: 0, bottom: 0, column: 30, horizon: 50)
-		stackedBarChart.offsets = ChartOffset(top: 0, bottom: 0, column: 30, horizon: 50)
+	func barChart(_ barChart: HamsBarChart, configureForCharts view: Int) {
 		
 		if barChart == simpleBarChart {
-			simpleBarChart.filledColor = .plain(blue)
-			simpleBarChart.labelStyle = .custom(["session1","session2","session3"])
+			
+			simpleBarChart.filledStyle = .plain(blue)
+			simpleBarChart.labelStyle = .custom(["session1","session2","session3", "session4"])
+			if view == 0 {
+				simpleBarChart.title = "BarChart(plain)"
+				simpleBarChart.offsets = ChartOffset(top: 20, bottom: 0, column: 30, horizon: 20)
+			} else {
+				simpleBarChart.title = "BarChart(random color)"
+			}
 		}
 		if barChart == groupedBarChart{
-			groupedBarChart.filledColor = .gradient(top: redDark, bottom: red)
-			groupedBarChart.labelStyle = .custom(["1st sy","2nd sy","3rd sy"])
+			groupedBarChart.title = "Grouped BarChart"
+			groupedBarChart.filledStyle = .gradient(top: redDark, bottom: red)
+			groupedBarChart.labelStyle = .custom(["1st sy","2nd sy","3rd sy", "4th sy"])
 		}
 		if barChart == stackedBarChart{
-			stackedBarChart.filledColor = .gradient(top: redDark, bottom: red)
+			stackedBarChart.title = "Stacked BarChart"
+			stackedBarChart.filledStyle = .gradient(top: redDark, bottom: red)
+			stackedBarChart.offsets = ChartOffset(top: 0, bottom: 0, column: 30, horizon: 20)
 		}
 	}
 	

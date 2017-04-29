@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="HcU-pJ-eMJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6ET-w9-4Ai">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Hams Controller-->
+        <!--Hams Curve Chart Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HamsController" customModule="demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HamsCurveChartController" customModule="HamsterUIKitExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -20,16 +20,109 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6iB-DB-KKb" customClass="HamsCurveChart" customModule="HamsterUIKit">
+                                <rect key="frame" x="0.0" y="72" width="375" height="299"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="czp-lV-xna"/>
+                    <connections>
+                        <outlet property="hamsCurveChart" destination="6iB-DB-KKb" id="ww3-Vw-19G"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="437.60000000000002" y="72.413793103448285"/>
+        </scene>
+        <!--Hamster UIKit-->
+        <scene sceneID="r3E-PS-5jR">
+            <objects>
+                <tableViewController id="pQJ-3k-UjF" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ROH-4O-Ijh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="SZ3-rB-kha">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" editingAccessoryType="detailButton" id="ofF-nS-HdY">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ofF-nS-HdY" id="qjr-Hd-CQk">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BarChart" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYv-Qt-8K4">
+                                                    <rect key="frame" x="49" y="12" width="223" height="26"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="HcU-pJ-eMJ" kind="show" id="joa-FB-w1p"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="jWQ-ZO-jJA">
+                                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jWQ-ZO-jJA" id="r2t-zP-GZd">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CurveChart" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FsD-fb-nwp">
+                                                    <rect key="frame" x="49" y="12" width="223" height="26"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="z8r-HG-lvN"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="pQJ-3k-UjF" id="eaR-Xb-U5b"/>
+                            <outlet property="delegate" destination="pQJ-3k-UjF" id="aJf-3Z-cMu"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Hamster UIKit" id="7eH-aN-LmI"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3IX-Bv-JQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-394.39999999999998" y="522.18890554722645"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dEt-MB-7VN">
+            <objects>
+                <navigationController id="6ET-w9-4Ai" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fZg-Cp-HlQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="pQJ-3k-UjF" kind="relationship" relationship="rootViewController" id="sZ8-4z-lHT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XE3-Up-oHr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1263" y="522"/>
         </scene>
         <!--Bar Chart View Controller-->
         <scene sceneID="iDB-DO-vpX">
             <objects>
-                <viewController id="HcU-pJ-eMJ" customClass="BarChartViewController" customModule="demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="HcU-pJ-eMJ" customClass="BarChartViewController" customModule="HamsterUIKitExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YfJ-62-ddL"/>
                         <viewControllerLayoutGuide type="bottom" id="ThX-n2-FSr"/>
@@ -37,12 +130,46 @@
                     <view key="view" contentMode="scaleToFill" id="2QJ-t7-LmW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="laT-ey-k68" customClass="HamsBarChart" customModule="HamsterUIKit">
+                                <rect key="frame" x="0.0" y="64" width="375" height="195.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0oF-JW-fOJ" customClass="HamsBarChart" customModule="HamsterUIKit">
+                                <rect key="frame" x="0.0" y="471.5" width="375" height="195.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZID-Pt-csc" customClass="HamsBarChart" customModule="HamsterUIKit">
+                                <rect key="frame" x="0.0" y="267.5" width="375" height="196"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="0oF-JW-fOJ" firstAttribute="bottom" secondItem="ThX-n2-FSr" secondAttribute="top" id="7Dv-3r-XvE"/>
+                            <constraint firstItem="ZID-Pt-csc" firstAttribute="top" secondItem="laT-ey-k68" secondAttribute="bottom" constant="8" symbolic="YES" id="92X-GM-fFR"/>
+                            <constraint firstAttribute="trailing" secondItem="laT-ey-k68" secondAttribute="trailing" id="AZU-eu-kVc"/>
+                            <constraint firstItem="ZID-Pt-csc" firstAttribute="leading" secondItem="0oF-JW-fOJ" secondAttribute="leading" id="ND2-fz-sYd"/>
+                            <constraint firstItem="laT-ey-k68" firstAttribute="height" secondItem="ZID-Pt-csc" secondAttribute="height" id="SrL-10-Ukf"/>
+                            <constraint firstItem="ZID-Pt-csc" firstAttribute="trailing" secondItem="0oF-JW-fOJ" secondAttribute="trailing" id="WUk-Af-8BT"/>
+                            <constraint firstItem="laT-ey-k68" firstAttribute="leading" secondItem="ZID-Pt-csc" secondAttribute="leading" id="hs3-nk-V0p"/>
+                            <constraint firstItem="laT-ey-k68" firstAttribute="top" secondItem="YfJ-62-ddL" secondAttribute="bottom" id="nGc-JC-uGB"/>
+                            <constraint firstItem="0oF-JW-fOJ" firstAttribute="top" secondItem="ZID-Pt-csc" secondAttribute="bottom" constant="8" symbolic="YES" id="ng6-OX-Jjr"/>
+                            <constraint firstItem="laT-ey-k68" firstAttribute="leading" secondItem="2QJ-t7-LmW" secondAttribute="leading" id="tLB-9k-psM"/>
+                            <constraint firstItem="laT-ey-k68" firstAttribute="trailing" secondItem="ZID-Pt-csc" secondAttribute="trailing" id="vPo-02-ePi"/>
+                            <constraint firstItem="laT-ey-k68" firstAttribute="height" secondItem="0oF-JW-fOJ" secondAttribute="height" id="ybo-Mu-O0Z"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="kZR-Hu-Zcr"/>
+                    <connections>
+                        <outlet property="groupedBarChart" destination="ZID-Pt-csc" id="pSa-ix-Dqv"/>
+                        <outlet property="simpleBarChart" destination="laT-ey-k68" id="VtY-uS-IWG"/>
+                        <outlet property="stackedBarChart" destination="0oF-JW-fOJ" id="8Co-MZ-t1P"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jpF-6R-bIX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="92" y="829"/>
+            <point key="canvasLocation" x="437.60000000000002" y="782.15892053973016"/>
         </scene>
     </scenes>
 </document>
