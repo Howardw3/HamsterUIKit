@@ -2,7 +2,7 @@
 //  HamsChartBase.swift
 //  HamsterUIKit
 //
-//  Created by Drake on 4/28/17.
+//  Created by Howard on 4/28/17.
 //  Copyright © 2017 Howard Wang. All rights reserved.
 //
 
@@ -21,9 +21,6 @@ open class HamsChartBase:UIControl {
 	
 	/// default is false
 	var isDataEmpty = false
-	
-	/// description for each column
-	var labels = [String]()
 	
 	/// current number of chart
 	var currentChart: Int = 0
@@ -45,26 +42,52 @@ open class HamsChartBase:UIControl {
 	/// default is frame.height - chartFooterHeight - 10
 	var base: CGFloat = 0
 	
-	///
+	/// description for each column
+	var labels = [String]()
+	
+	/// label (week, costom label) height
+	var labelHeight: CGFloat = 10
+	
+	/// padding between chartHeaderHeight and content
+	var paddingHeight: CGFloat = 20
+	
+	/// in curve chart fill graph
+	///	in barchart fill background
 	open var filledStyle: HamsBackgoundStyle?
+	
 	open var offsets: ChartOffset!
+	
 	open var pageIndicatorTintColor:UIColor?
+	
 	open var labelStyle: HamsLabelStyle!
+	
+	open var labelsColor: UIColor = .white
+	
 	open var chartHeaderHeight: CGFloat!
+	
 	open var chartFooterHeight: CGFloat! {
 		didSet {
 			base = frame.height - chartFooterHeight - 10
 		}
 	}
 	
+	///	change title label in header
 	open var title:String = "Title"
-	open var titleColor:UIColor = .white
-	open var labelsColor: UIColor = .white
 	
+	/// change title color
+	open var titleColor:UIColor = .white
+	
+	///	variables can be changed in configureForChart
 	func configure(){
 		removeLabel()
-		chartHeaderHeight = frame.height/5 + 20
-		chartFooterHeight = frame.height/5
+		if frame.height/5 > 40.0 {
+			chartFooterHeight = 60
+			chartHeaderHeight = 60
+		} else {
+			chartHeaderHeight = frame.height/5 + 30
+			chartFooterHeight = frame.height/5
+		}
+		
 		title = "Title"
 		titleColor = .white
 		offsets = ChartOffset(top: 0, bottom: 0, column: 30, horizon: 50)
@@ -75,8 +98,9 @@ open class HamsChartBase:UIControl {
 		pageControl.widthAnchor.constraint(equalToConstant: chartFooterHeight+5).isActive = true
 	}
 	
+	///	set title in header
 	func setTitle() {
-		let titleLabel = UILabel(frame: CGRect( x: 0, y: chartHeaderHeight-39, width: frame.width, height: 29))
+		let titleLabel = UILabel(frame: CGRect( x: 0, y: chartHeaderHeight-49, width: frame.width, height: 29))
 		titleLabel.text = title
 		titleLabel.font = UIFont.systemFont(ofSize: 24, weight: UIFontWeightSemibold)
 		titleLabel.adjustsFontSizeToFitWidth = true
@@ -86,13 +110,17 @@ open class HamsChartBase:UIControl {
 		self.addSubview(titleLabel)
 	}
 	
-	
+	///	the subclass must override this variable, default is 0
 	open var numberOfCharts: Int { return 0 }
-
+	
+	/// the subclass must override this function, default return 0
 	open func numberOfValues(in chart: Int) -> Int { return 0 }
 	
+	///	reload function for redraw chart and reload data
 	open func reloadData() { }
 	
+	///	get number of charts and values from controller
+	///	reload data
 	func update() {
 		pageControl.numberOfPages = numberOfCharts
 		chartValues = []
@@ -109,6 +137,7 @@ open class HamsChartBase:UIControl {
 		}
 	}
 	
+	///	setup conponent when chart is created
 	func setup() {
 		
 		self.backgroundColor = .clear
@@ -118,7 +147,6 @@ open class HamsChartBase:UIControl {
 		self.addSubview(pageControl)
 		pageControl.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
 		pageControl.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-		
 		
 		self.swipeGestureLeft.direction = .left
 		self.swipeGestureRight.direction = .right
@@ -131,10 +159,11 @@ open class HamsChartBase:UIControl {
 		self.addGestureRecognizer(self.swipeGestureLeft)
 		self.addGestureRecognizer(self.swipeGestureRight)
 		
-		
 		configure()
 	}
 	
+	///	remove label by lable tag
+	///	only call it when you use addSubview after reloadData()
 	func removeLabel(tag: Int) {
 		for sub in self.subviews {
 			if sub.tag == tag {
@@ -143,6 +172,8 @@ open class HamsChartBase:UIControl {
 		}
 	}
 	
+	///	remove all labels
+	///	only call it when you use addSubview after reloadData()
 	func removeLabel() {
 		for subview in self.subviews {
 			if subview is UILabel {
@@ -151,7 +182,7 @@ open class HamsChartBase:UIControl {
 		}
 	}
 	
-	/// capture a screenshot by
+	/// capture a screenshot for swipe transition between two views
 	func capture() -> UIImageView {
 		let renderer = UIGraphicsImageRenderer(size: self.bounds.size)
 		let image = renderer.image { ctx in

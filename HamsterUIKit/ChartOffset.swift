@@ -7,6 +7,8 @@
 //
 
 import Foundation
+
+///	it will change the display of chart
 public struct ChartOffset {
 	let top: CGFloat
 	let bottom: CGFloat

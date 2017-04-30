@@ -2,19 +2,28 @@
 //  GradientedBarChat.swift
 //  Hamster
 //
-//  Created by Drake on 2/12/17.
-//  Copyright © 2017 Jiongzhi Wang. All rights reserved.
+//  Created by Howard on 2/12/17.
+//  Copyright © 2017 Howard Wang. All rights reserved.
 //
 
 import UIKit
 
+///	the protocol represnts the data model object
 public protocol HamsBarChartDataSource{
+	///	implement this method to customize rectangular bars
 	func barChart(_ barChart: HamsBarChart, barForChart indexPath: HamsIndexPath) -> HamsBarChartRect
+	
+	///	set number of charts
 	func numberOfCharts(in barChart: HamsBarChart) -> Int
+	
+	/// set number of values in one chart
 	func barChart(_ barChart: HamsBarChart, numberOfValuesInChart chart: Int) -> Int
 }
 
-@objc public protocol HamsBarChartDelegate {
+/// this protocol represents the display and behaviour of the charts
+@objc
+public protocol HamsBarChartDelegate {
+	///	should use this method to configue each chart
 	@objc optional func barChart(_ barChart: HamsBarChart, configureForCharts chart: Int)
 }
 
@@ -32,6 +41,7 @@ open class HamsBarChart: HamsChartBase {
 		return count
 	}
 	
+	/// this will reload data and display
 	open override func reloadData() {
 		if dataSource != nil {
 			self.configure()

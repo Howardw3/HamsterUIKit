@@ -8,9 +8,10 @@
 
 import Foundation
 
+///	label style(week, custom) for describing the value
 public enum HamsLabelStyle {
-	case week
-	case custom([String])
+	case week	//	default
+	case custom([String])	//	can accept a set of descriptions
 	
 	static let weekLabels = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 	

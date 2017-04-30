@@ -8,23 +8,32 @@
 
 import UIKit
 
+///	the protocol represnts the data model object
 public protocol HamsCurveChartDataSource{
+	///	implement this method to customize value point
 	func curveChart(_ curveChart: HamsCurveChart, pointForChart indexPath: HamsIndexPath) -> HamsCurveChartPoint
+	
+	///	set number of charts
 	func numberOfCharts(in curveChart: HamsCurveChart) -> Int
 	
+	/// set number of values in one chart
 	func curveChart(_ curveChart: HamsCurveChart, numberOfValuesInChart chart: Int) -> Int
 }
 
+/// this protocol represents the display and behaviour of the charts
+@objc
 public protocol HamsCurveChartDelegate {
-	func curveChart(_ curveChart: HamsCurveChart, configureForCharts chart: Int)
+	///	should use this method to configue each chart
+	@objc optional func curveChart(_ curveChart: HamsCurveChart, configureForCharts chart: Int)
 }
 
+///	end point customize
 public enum EndpointType {
-	case none
-	case zero
-	case max
-	case auto
-	case value(CGFloat)
+	case none	//	nil
+	case zero	//	0
+	case max	// 	maximum value of all values
+	case auto	// auto
+	case value(CGFloat)	//	set custom value
 	case average(CGFloat, CGFloat)
 }
 
@@ -33,10 +42,12 @@ open class HamsCurveChart: HamsChartBase {
 	fileprivate var maximum:CGFloat = 0
 	fileprivate var labelWidth:CGFloat = 0
 	fileprivate var quadCurve: QuadCurveAlgorithm!
+	fileprivate var gapBtwPointAndValue:CGFloat = 10
 	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 		setup()
 	}
+	
 	convenience init() {
 		self.init(frame: CGRect.zero)
 		setup()
@@ -50,9 +61,14 @@ open class HamsCurveChart: HamsChartBase {
 	open var delegate: HamsCurveChartDelegate?
 	open var dataSource: HamsCurveChartDataSource?
 	
+	///	set start position
 	open var startPoint:EndpointType!
+	
+	///	set end position
 	open var endPoint:EndpointType!
 	
+	/// set suggestion value
+	///	it will set maximum to its 4/3
 	open var suggestValue: Int = 0 {
 		didSet{
 			if suggestValue > 0 {
@@ -67,10 +83,11 @@ open class HamsCurveChart: HamsChartBase {
 		endPoint = .auto
 		suggestValue = 0
 		titleColor = .black
-//		offsets = ChartOffset(top: 0, bottom: 0, column: 30, horizon: 50)
+		offsets = ChartOffset(top: 30, bottom: 0, column: 0, horizon: 0)
 		labelsColor = .black
 	}
 	
+	/// set maximum value
 	open var maxValue:CGFloat {
 		set{
 			if suggestValue == 0 {
@@ -83,6 +100,7 @@ open class HamsCurveChart: HamsChartBase {
 		return dataSource!.numberOfCharts(in: self)
 	}
 	
+	/// this will reload data and display
 	open override func reloadData() {
 		if dataSource != nil {
 			self.configure()
@@ -123,6 +141,16 @@ open class HamsCurveChart: HamsChartBase {
 			chartValues = chartValues + [val]
 		}
 		numberOfValues = chartValues.count
+		
+		let contentOffsets = ChartOffset(top: offsets.top + chartHeaderHeight + gapBtwPointAndValue + labelHeight + 20,
+		                                 bottom: offsets.bottom + chartFooterHeight,
+		                                 column: offsets.column,
+		                                 horizon: offsets.horizon)
+		quadCurve = QuadCurveAlgorithm(with: chartValues, frameSize: frame.size, offsets: contentOffsets)
+		
+		quadCurve.maxValue = maximum
+		labelWidth = quadCurve.unitWidth
+		setLabels()
 	}
 	
 	override open func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
@@ -137,22 +165,14 @@ open class HamsCurveChart: HamsChartBase {
 		let context = UIGraphicsGetCurrentContext()
 		pageControl.pageIndicatorTintColor = pageIndicatorTintColor
 
-		let contentOffsets = ChartOffset(top: offsets.top + chartHeaderHeight,
-		                                 bottom: offsets.bottom + chartFooterHeight,
-		                                 column: offsets.column,
-		                                 horizon: offsets.horizon)
-		let quadCurve = QuadCurveAlgorithm(with: chartValues, frameSize: frame.size, offsets: contentOffsets)
-		
-		quadCurve.maxValue = maximum
-		
-		drawGraph(ctx: context!, quadCurve: quadCurve)
+		drawGraph(ctx: context!)
 		
 		if suggestValue > 0 && !isDataEmpty{
 			drawSuggestion(quadCurve: quadCurve)
 		}
-		labelWidth = quadCurve.unitWidth
 		
-		drawPoint(ctx: context!, quadCurve: quadCurve)
+		
+		drawPoint(ctx: context!)
 	}
 	
 	fileprivate func drawSuggestion(quadCurve: QuadCurveAlgorithm) {
@@ -206,7 +226,7 @@ open class HamsCurveChart: HamsChartBase {
 		self.addSubview(suggLabel)
 	}
 	
-	fileprivate func drawGraph(ctx: CGContext, quadCurve: QuadCurveAlgorithm) {
+	fileprivate func drawGraph(ctx: CGContext) {
 		let height = frame.height
 		
 		let graphPath = quadCurve.quadCurvePath
@@ -253,19 +273,12 @@ open class HamsCurveChart: HamsChartBase {
 	
 
 	
-	fileprivate func drawPoint(ctx: CGContext, quadCurve: QuadCurveAlgorithm) {
-		var start = 0, end = numberOfValues
-		if (value(type: startPoint) != nil){
-			start = 1
-		}
-		if (value(type: endPoint) != nil){
-			end -= 1
-		}
-		for i in start..<end {
+	fileprivate func drawPoint(ctx: CGContext) {
+		for i in endpointInd.start..<endpointInd.end {
 			let point = quadCurve.getPoint(by: i)
 
 			if !isDataEmpty {
-				let ind = i - start
+				let ind = i - endpointInd.start
 				let curveChartPoint = dataSource?.curveChart(self, pointForChart: HamsIndexPath(column: ind, view: currentChart))
 				
 				let outerCircle = drawOuterCircle(ctx: ctx, point: point, curveChartPoint: curveChartPoint!)
@@ -280,7 +293,8 @@ open class HamsCurveChart: HamsChartBase {
 					
 					removeLabel(tag: 12138)
 					// add touched label
-					let pointValueLabel = UILabel(frame: CGRect(x: point.x - labelWidth / 2, y: point.y-8-7-10, width: labelWidth, height: 14))
+					let gap = (curveChartPoint?.outerRadius)! + (curveChartPoint?.innerRadius)! + gapBtwPointAndValue
+					let pointValueLabel = UILabel(frame: CGRect(x: point.x - labelWidth / 2, y: point.y-gap, width: labelWidth, height: labelHeight))
 					pointValueLabel.text = "\(Int(chartValues[i]))"
 					pointValueLabel.font = UIFont.systemFont(ofSize: 12)
 					pointValueLabel.textAlignment = .center
@@ -290,8 +304,6 @@ open class HamsCurveChart: HamsChartBase {
 					
 				}
 			}
-			drawLabels(column: i, point: point)
-			
 		}
 	}
 	
@@ -324,14 +336,28 @@ open class HamsCurveChart: HamsChartBase {
 		return path
 	}
 	
-	fileprivate func drawLabels(column i:Int, point: CGPoint) {
-		let label = UILabel(frame: CGRect( x: point.x - labelWidth / 2, y: chartHeaderHeight - 10, width: labelWidth, height: 10))
-		label.text = "\(labels[i-1])"
-		label.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightLight)
-		label.textColor = labelsColor
-		label.textAlignment = .center
-		label.tag = i+2000
-		self.addSubview(label)
+	fileprivate func setLabels() {
+		for i in endpointInd.start..<endpointInd.end {
+			let posX = quadCurve.getX(by: i)
+			let label = UILabel(frame: CGRect( x: posX - labelWidth / 2, y: chartHeaderHeight - 10, width: labelWidth, height: 10))
+			label.text = "\(labels[i-1])"
+			label.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightLight)
+			label.textColor = labelsColor
+			label.textAlignment = .center
+			label.tag = i+2000
+			self.addSubview(label)
+		}
+	}
+	
+	fileprivate var endpointInd:(start: Int, end: Int) {
+		var start = 0, end = numberOfValues
+		if (value(type: startPoint) != nil){
+			start = 1
+		}
+		if (value(type: endPoint) != nil){
+			end -= 1
+		}
+		return (start, end)
 	}
 	
 	fileprivate func value(type: EndpointType, left: Bool = true) -> CGFloat? {
