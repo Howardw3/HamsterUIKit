@@ -1,9 +1,9 @@
 # HamsterUIKit
 A simple and elegant UIKit(Chart) for iOS, written in Swift.
 
-Curve and bar Charts.   
-Protocols are designed based on UIKit(UITableView).  
-Draw a complex but elegant graph in 10 minutes.
+:bar_chart: Curve and bar Charts.   
+:bulb: Protocols are designed based on UIKit(UITableView).  
+:keycap_ten: Draw a complex but elegant graph in 10 minutes.
 
 <p align="center">
 <img src="Img/CurveChart.gif" width="300" height="160"  style="margin-right: 10px;margin-bottom: 10px;"><img src="Img/SimpleBarChart.gif" width="300" style="margin-left: 10px;margin-bottom: 10px;"><img src="Img/GroupedBarChart.png" width="300" style="margin-right: 10px;margin-top: 10px;"><img src="Img/StackedBarChart.png" width="300" style="margin-left: 10px;margin-top: 10px;">
@@ -54,6 +54,8 @@ import HamsterUIKit
 [Curve Chart Demo](https://github.com/ChromieIsDangerous/HamsterUIKit/blob/master/HamsterUIKitExample/HamsCurveChartController.swift)
 
 ## Bar Chart Quick start
+<p align="center">
+<img src="Img/QuickStart.png"  height="200"  style="margin-right: 10px;margin-bottom: 10px;"></p>
 ```swift
 import UIKit
 import HamsterUIKit
