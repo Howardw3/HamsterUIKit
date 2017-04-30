@@ -56,6 +56,7 @@ import HamsterUIKit
 ## Bar Chart Quick start
 <p align="center">
 <img src="Img/QuickStart.png"  height="200"  style="margin-right: 10px;margin-bottom: 10px;"></p>
+
 ```swift
 import UIKit
 import HamsterUIKit
