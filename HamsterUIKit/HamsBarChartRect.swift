@@ -2,7 +2,7 @@
 //  HamsBarChartRect.swift
 //  HamsterUIKit
 //
-//  Created by Drake on 4/25/17.
+//  Created by Howard on 4/25/17.
 //  Copyright © 2017 Howard Wang. All rights reserved.
 //
 

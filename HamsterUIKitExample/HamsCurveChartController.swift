@@ -33,7 +33,8 @@ class HamsCurveChartController:UIViewController, HamsCurveChartDelegate, HamsCur
 	}
 	
 	func curveChart(_ curveChart: HamsCurveChart, configureForCharts view: Int) {
-		hamsCurveChart.offsets = ChartOffset(top: 0, bottom: 60, column: 0, horizon: 0)
+		hamsCurveChart.offsets = ChartOffset(top: 0, bottom: 0, column: 0, horizon: 0)
+		hamsCurveChart.title = "Curve Chart"
 		switch view {
 		case 0:
 			hamsCurveChart.filledStyle = .gradient(top: redDark, bottom: red)
@@ -55,18 +56,18 @@ class HamsCurveChartController:UIViewController, HamsCurveChartDelegate, HamsCur
 	func curveChart(_ curveChart: HamsCurveChart, pointForChart indexPath: HamsIndexPath) -> HamsCurveChartPoint {
 		let point = HamsCurveChartPoint()
 		
-		switch indexPath.view {
+		switch indexPath.chart {
 		case 0:
 			point.innerColor = blue
-			point.pointValue = CGFloat(dataSets[indexPath.view][indexPath.column])
+			point.pointValue = CGFloat(dataSets[indexPath.chart][indexPath.column])
 		case 1:
 			point.innerColor = redDark
-			point.pointValue = CGFloat(dataSets[indexPath.view][indexPath.column])
+			point.pointValue = CGFloat(dataSets[indexPath.chart][indexPath.column])
 			
 		case 2:
-			point.pointValue = CGFloat(dataSets[indexPath.view][indexPath.column])
+			point.pointValue = CGFloat(dataSets[indexPath.chart][indexPath.column])
 		case 3:
-			point.pointValue = CGFloat(dataSets[indexPath.view][indexPath.column])
+			point.pointValue = CGFloat(dataSets[indexPath.chart][indexPath.column])
 		default:break
 		}
 		return point

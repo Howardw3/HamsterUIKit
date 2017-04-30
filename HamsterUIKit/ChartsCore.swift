@@ -55,7 +55,7 @@ open class ChartsCore {
 	}
 	
 	var unitWidth: CGFloat {
-		return columnWidth + gapBetweenColumns
+		return columnWidth + gapWidth
 	}
 	
 	var contentMidWidth: CGFloat {
@@ -66,9 +66,7 @@ open class ChartsCore {
 
 		switch alignment {
 		case .justified:
-			let spacer = (chartWidth - horizonMargin * 2 - columnWidth * 2) /
-				CGFloat((values.count - 1))
-			var x:CGFloat = CGFloat(column) * spacer
+			var x:CGFloat = CGFloat(column) * gapWidth
 			x += horizonMargin + columnWidth/2
 			return x
 		case .left:
@@ -101,6 +99,10 @@ open class ChartsCore {
 		set {
 			gapBetweenColumns = newValue
 		} get {
+			if alignment == .justified {
+				return (chartWidth - horizonMargin * 2 - columnWidth * 2) /
+					CGFloat((values.count - 1))
+			}
 			return gapBetweenColumns
 		}
 	}

@@ -7,14 +7,20 @@
 //
 
 import Foundation
+
+///	same as IndexPath in UITableVIew, it contains two value
+///	column: index of data in data set
+///	chart: index of chart
 open class HamsIndexPath {
 	fileprivate var _column = 0
-	fileprivate var _view = 0
+	fileprivate var _chart = 0
+	
+	///	method to create a HamsIndexPath
 	public init(column: Int, view: Int) {
 		_column = column
-		_view = view
+		_chart = chart
 	}
 	
 	open var column: Int { return _column }
-	open var view: Int { return _view }
+	open var chart: Int { return _chart }
 }

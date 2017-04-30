@@ -72,7 +72,7 @@ class BarChartViewController: UIViewController, HamsBarChartDelegate, HamsBarCha
 		let rect = HamsBarChartRect()
 		
 		if barChart == simpleBarChart {
-			switch indexPath.view {
+			switch indexPath.chart {
 			case 0:
 				rect.value = .plain(dataSets[indexPath.column])
 				rect.color = .plain(.white)
