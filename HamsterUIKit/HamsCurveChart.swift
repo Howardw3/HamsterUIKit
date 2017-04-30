@@ -115,7 +115,7 @@ open class HamsCurveChart: HamsChartBase {
 	}
 	
 	override func update() {
-		delegate?.curveChart(self, configureForCharts: currentChart)
+		delegate?.curveChart!(self, configureForCharts: currentChart)
 		super.update()
 		
 		if numberOfValues > 0 {
