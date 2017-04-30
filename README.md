@@ -1,7 +1,17 @@
 # HamsterUIKit
-A simple and elegant UIKit for iOS.
+A simple and elegant UIKit(Chart) for iOS, written in Swift.
+
+Curve and bar Charts.   
+Protocols are designed based on UIKit(UITableView).  
+Draw a complex but elegant graph in 10 minutes.
+
+<p align="center">
+<img src="Img/CurveChart.gif" width="300" height="160"  style="margin-right: 10px;margin-bottom: 10px;"><img src="Img/SimpleBarChart.gif" width="300" style="margin-left: 10px;margin-bottom: 10px;"><img src="Img/GroupedBarChart.png" width="300" style="margin-right: 10px;margin-top: 10px;"><img src="Img/StackedBarChart.png" width="300" style="margin-left: 10px;margin-top: 10px;">
+
+</p>
 
 ## Installation
+
 ### CocoaPods
 Add to your Podfile:
 ```
@@ -18,77 +28,78 @@ Import the framework
 import HamsterUIKit
 ```
 
+## Protocols
+### Initialize and reload
+| UITableView     | HamsCurveChart | HamsBarChart |
+| :---            |     :---:      |          :---: |
+| init(frame: CGRect)   | same     | same    |
+| init?(coder aDecoder: NSCoder)   | same     | same    |
+| reloadData   | same     | same    |
 
-## Curve Chart
-All protocols are designed based on UIKit. If you are familiar with UITableView or UICollectionView, you can draw an elegant graph in 10 minutes.
-![ScreenShot](Img/CurveChart.gif)
+### DataSource
+| UITableView     | HamsCurveChart    | HamsBarChart      |
+| ---            | ---            | ---            |
+| numberOfSections(in tableView: UITableView) -> Int   | numberOfCharts(in curveChart: HamsCurveChart) -> Int | numberOfCharts(in barChart: HamsBarChart) -> Int|
+| tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell | curveChart(_ curveChart: HamsCurveChart, pointForChart indexPath: HamsIndexPath) -> HamsCurveChartPoint | barChart(_ barChart: HamsBarChart, barForChart indexPath: HamsIndexPath) -> HamsBarChartRect |
+| tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int | curveChart(_ curveChart: HamsCurveChart, numberOfValuesInChart chart: Int) -> Int | barChart(_ barChart: HamsBarChart, numberOfValuesInChart chart: Int) -> Int|
 
-### Quick start
+### Delegate
+|HamsCurveChart | HamsBarChart |
+|     :---      |          :--- |
+| curveChart(_ curveChart: HamsCurveChart, configureForCharts chart: Int)     | barChart(_ barChart: HamsBarChart, configureForCharts chart: Int)    |
 
-Inherit protocol to ViewController:
-```
-MyController:UIViewController, HamsCurveChartDelegate, HamsCurveChartDataSource
-```
+## Demo
+[Bar Chart Demo](https://github.com/ChromieIsDangerous/HamsterUIKit/blob/master/HamsterUIKitExample/BarChartViewController.swift)
 
-Create a view by stroyboard or code:
-```
-var hamsCurveChart = HamsCurveChart(frame: CGRect(origin: CGPoint(x:0, y: 50), size: CGSize(width: 375, height: 200)))
-```
+[Curve Chart Demo](https://github.com/ChromieIsDangerous/HamsterUIKit/blob/master/HamsterUIKitExample/HamsCurveChartController.swift)
 
-Bind delegate and datasource to self controller in ```func viewDidLoad()```:
+## Bar Chart Quick start
+```swift
+import UIKit
+import HamsterUIKit
 
-```
-hamsCurveChart.delegate = self
-hamsCurveChart.dataSource = self
-hamsCurveChart.offsets = ChartOffset(top: 65, bottom: 60, column: 0, horizon: 0) // set offset
-self.view.addSubview(hamsCurveChart) // add hamsCurveChart to self.view
-```
+class HelloBarChartViewController: UIViewController, HamsBarChartDelegate, HamsBarChartDataSource {
+	var barChart:HamsBarChart = HamsBarChart()
+	var dataSets = [CGFloat]()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+		barChart = HamsBarChart(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 300))
 
-Implement protocol ```HamsCurveChartDataSource``` to load datasets and decorate each point in the same view.
-For single view
-```
-func curveChart(_ curveChart: HamsCurveChart, numberOfPointsInView view: Int) -> Int {
+		barChart.delegate = self
+		barChart.dataSource = self
+		view.addSubview(barChart)
+    }
+
+	func barChart(_ barChart: HamsBarChart, numberOfValuesInChart chart: Int) -> Int {
 		return dataSets.count
-}
-func numberOfViews(in tableView: HamsCurveChart) -> Int {
-	return 1
-}
-func curveChart(_ curveChart: HamsCurveChart, pointForChart indexPath: HamsIndexPath) -> HamsCurveChartPoint {
-		let point = HamsCurveChartPoint()
-		switch indexPath.view {
-		case 0:
-			point.innerColor = UIColor.blue
-			point.pointValue = CGFloat(dataSets[indexPath.point])
-
-		default:break
-  }
-	return point
-}
-```
-
-Implement protocol ```HamsCurveChartDelegate``` to custom chart's background, suggestion, maxValue or endpoint.
-You must implement:
-```
-func curveChart(_ curveChart: HamsCurveChart, configureForViews view: Int) {
-		switch view {
-		case 0:
-			hamsCurveChart.filledColor = .gradient(top: redDark, bottom: red)
-			hamsCurveChart.startPoint = .zero
-			hamsCurveChart.suggestValue = 900
-		default:break
 	}
+
+	func numberOfCharts(in barChart: HamsBarChart) -> Int {
+		return 1
+	}
+
+	func barChart(_ barChart: HamsBarChart, barForChart indexPath: HamsIndexPath) -> HamsBarChartRect {
+		let rect = HamsBarChartRect()
+		rect.value = .plain(dataSets[indexPath.column])
+		rect.color = .plain(.white)
+		return rect
+	}
+
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		dataSets = [1,4,6,1]
+		barChart.reloadData()
+	}
+
+	func barChart(_ barChart: HamsBarChart, configureForCharts view: Int) {
+
+		barChart.title = "BarChart(plain)"
+	}
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
 }
 ```
-
-Reload data exactly same as UITableView, you may reload data when Scene is showing in ```func viewWillAppear(_ animated: Bool)```:
-```
-override func viewWillAppear(_ animated: Bool) {
-  dataSets = [1,2,4,5,1,3,400]]
-  hamsCurveChart.reloadData()
-}
-```
-or observing Notification to reduce unnecessary redraw.
-
 
 ## Todo
 Advanced Configuration
