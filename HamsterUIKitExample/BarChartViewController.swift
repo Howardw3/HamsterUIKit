@@ -41,9 +41,9 @@ class BarChartViewController: UIViewController, HamsBarChartDelegate, HamsBarCha
 		stackedBarChart.delegate = self
 		stackedBarChart.dataSource = self
 
-		self.view.addSubview(simpleBarChart)
-		self.view.addSubview(groupedBarChart)
-		self.view.addSubview(stackedBarChart)
+//		self.view.addSubview(simpleBarChart)
+//		self.view.addSubview(groupedBarChart)
+//		self.view.addSubview(stackedBarChart)
 		
 		_reloadData()
 		

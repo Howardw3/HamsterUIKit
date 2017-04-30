@@ -24,6 +24,7 @@
 		701480061EAD35E00065F8BF /* HamsBackgoundStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701480051EAD35E00065F8BF /* HamsBackgoundStyle.swift */; };
 		701480081EAD36330065F8BF /* HamsIndexPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701480071EAD36330065F8BF /* HamsIndexPath.swift */; };
 		7014800B1EAD3FF40065F8BF /* ChartOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7014800A1EAD3FF40065F8BF /* ChartOffset.swift */; };
+		7037D1351EB64AD800B8CB00 /* HelloBarChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7037D1341EB64AD800B8CB00 /* HelloBarChartViewController.swift */; };
 		706153231EAFA7B90078250E /* HamsBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706153221EAFA7B90078250E /* HamsBarChart.swift */; };
 		706153271EAFDA690078250E /* HamsBarChartRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706153261EAFDA690078250E /* HamsBarChartRect.swift */; };
 		709A43881EA3262C0076CED4 /* HamsterUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709A437E1EA3262C0076CED4 /* HamsterUIKit.framework */; };
@@ -81,6 +82,7 @@
 		701480051EAD35E00065F8BF /* HamsBackgoundStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamsBackgoundStyle.swift; sourceTree = "<group>"; };
 		701480071EAD36330065F8BF /* HamsIndexPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamsIndexPath.swift; sourceTree = "<group>"; };
 		7014800A1EAD3FF40065F8BF /* ChartOffset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartOffset.swift; sourceTree = "<group>"; };
+		7037D1341EB64AD800B8CB00 /* HelloBarChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloBarChartViewController.swift; sourceTree = "<group>"; };
 		706153221EAFA7B90078250E /* HamsBarChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamsBarChart.swift; sourceTree = "<group>"; };
 		706153261EAFDA690078250E /* HamsBarChartRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamsBarChartRect.swift; sourceTree = "<group>"; };
 		709A437E1EA3262C0076CED4 /* HamsterUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HamsterUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +131,7 @@
 				7011FE121EB2EC8F00157E9B /* Assets.xcassets */,
 				7011FE141EB2EC8F00157E9B /* LaunchScreen.storyboard */,
 				7011FE171EB2EC8F00157E9B /* Info.plist */,
+				7037D1341EB64AD800B8CB00 /* HelloBarChartViewController.swift */,
 			);
 			path = HamsterUIKitExample;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 			files = (
 				7011FE0C1EB2EC8F00157E9B /* AppDelegate.swift in Sources */,
 				7011FE251EB39B3A00157E9B /* HamsCurveChartController.swift in Sources */,
+				7037D1351EB64AD800B8CB00 /* HelloBarChartViewController.swift in Sources */,
 				7011FE1C1EB2EC9D00157E9B /* BarChartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -618,6 +622,7 @@
 				7011FE1A1EB2EC8F00157E9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		709A43781EA3262C0076CED4 /* Build configuration list for PBXProject "HamsterUIKit" */ = {
 			isa = XCConfigurationList;
