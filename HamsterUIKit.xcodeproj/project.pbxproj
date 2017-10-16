@@ -31,6 +31,9 @@
 		709A438D1EA3262C0076CED4 /* HamsterUIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709A438C1EA3262C0076CED4 /* HamsterUIKitTests.swift */; };
 		709A438F1EA3262C0076CED4 /* HamsterUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 709A43811EA3262C0076CED4 /* HamsterUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		709A43A81EA3AECA0076CED4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709A43A71EA3AECA0076CED4 /* Extension.swift */; };
+		70A10E311F006D82001B68F5 /* HamsCoachMarkArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A10E301F006D82001B68F5 /* HamsCoachMarkArea.swift */; };
+		70D9A8241EF76991009AAB7D /* HamsCoachMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D9A8231EF76991009AAB7D /* HamsCoachMark.swift */; };
+		70D9A8281EF772CE009AAB7D /* CoachMarkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D9A8271EF772CE009AAB7D /* CoachMarkController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +95,9 @@
 		709A438C1EA3262C0076CED4 /* HamsterUIKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamsterUIKitTests.swift; sourceTree = "<group>"; };
 		709A438E1EA3262C0076CED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		709A43A71EA3AECA0076CED4 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		70A10E301F006D82001B68F5 /* HamsCoachMarkArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamsCoachMarkArea.swift; sourceTree = "<group>"; };
+		70D9A8231EF76991009AAB7D /* HamsCoachMark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamsCoachMark.swift; sourceTree = "<group>"; };
+		70D9A8271EF772CE009AAB7D /* CoachMarkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoachMarkController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +138,7 @@
 				7011FE141EB2EC8F00157E9B /* LaunchScreen.storyboard */,
 				7011FE171EB2EC8F00157E9B /* Info.plist */,
 				7037D1341EB64AD800B8CB00 /* HelloBarChartViewController.swift */,
+				70D9A8271EF772CE009AAB7D /* CoachMarkController.swift */,
 			);
 			path = HamsterUIKitExample;
 			sourceTree = "<group>";
@@ -170,6 +177,8 @@
 				701480071EAD36330065F8BF /* HamsIndexPath.swift */,
 				7011FE221EB2F4F700157E9B /* HamsLabelStyle.swift */,
 				7011FE2B1EB4036700157E9B /* HamsChartBase.swift */,
+				70D9A8231EF76991009AAB7D /* HamsCoachMark.swift */,
+				70A10E301F006D82001B68F5 /* HamsCoachMarkArea.swift */,
 			);
 			path = HamsterUIKit;
 			sourceTree = "<group>";
@@ -270,18 +279,19 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Howard Wang";
 				TargetAttributes = {
 					7011FE081EB2EC8F00157E9B = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = Q5YD476ZAX;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					709A437D1EA3262C0076CED4 = {
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = Q5YD476ZAX;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					709A43861EA3262C0076CED4 = {
@@ -343,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70D9A8281EF772CE009AAB7D /* CoachMarkController.swift in Sources */,
 				7011FE0C1EB2EC8F00157E9B /* AppDelegate.swift in Sources */,
 				7011FE251EB39B3A00157E9B /* HamsCurveChartController.swift in Sources */,
 				7037D1351EB64AD800B8CB00 /* HelloBarChartViewController.swift in Sources */,
@@ -354,12 +365,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70D9A8241EF76991009AAB7D /* HamsCoachMark.swift in Sources */,
 				709A43A81EA3AECA0076CED4 /* Extension.swift in Sources */,
 				701480061EAD35E00065F8BF /* HamsBackgoundStyle.swift in Sources */,
 				701480041EAD34AB0065F8BF /* HamsCurveChartPoint.swift in Sources */,
 				706153271EAFDA690078250E /* HamsBarChartRect.swift in Sources */,
 				7011FE2C1EB4036700157E9B /* HamsChartBase.swift in Sources */,
 				7011FE231EB2F4F700157E9B /* HamsLabelStyle.swift in Sources */,
+				70A10E311F006D82001B68F5 /* HamsCoachMarkArea.swift in Sources */,
 				701480081EAD36330065F8BF /* HamsIndexPath.swift in Sources */,
 				70147FFF1EAD34030065F8BF /* ChartsCore.swift in Sources */,
 				706153231EAFA7B90078250E /* HamsBarChart.swift in Sources */,
@@ -419,11 +432,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Q5YD476ZAX;
 				INFOPLIST_FILE = HamsterUIKitExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = howard.HamsterUIKitExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -434,11 +448,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Q5YD476ZAX;
 				INFOPLIST_FILE = HamsterUIKitExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = howard.HamsterUIKitExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -452,7 +467,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -460,7 +477,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -506,7 +527,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -514,7 +537,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -561,7 +588,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -582,7 +610,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = howard.HamsterUIKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

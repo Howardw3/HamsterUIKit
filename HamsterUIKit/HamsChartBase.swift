@@ -102,7 +102,7 @@ open class HamsChartBase:UIControl {
 	func setTitle() {
 		let titleLabel = UILabel(frame: CGRect( x: 0, y: chartHeaderHeight-49, width: frame.width, height: 29))
 		titleLabel.text = title
-		titleLabel.font = UIFont.systemFont(ofSize: 24, weight: UIFontWeightSemibold)
+		titleLabel.font = UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.semibold)
 		titleLabel.adjustsFontSizeToFitWidth = true
 		titleLabel.textColor = titleColor
 		titleLabel.textAlignment = .center

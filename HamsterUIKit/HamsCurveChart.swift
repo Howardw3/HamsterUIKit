@@ -220,7 +220,7 @@ open class HamsCurveChart: HamsChartBase {
 		suggLabel.text = "\(suggestValue)"
 		suggLabel.textAlignment = .center
 		suggLabel.textColor = UIColor.white
-		suggLabel.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightLight)
+		suggLabel.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.light)
 		suggLabel.tag = 12306
 		suggLabel.adjustsFontSizeToFitWidth = true
 		self.addSubview(suggLabel)
@@ -341,7 +341,7 @@ open class HamsCurveChart: HamsChartBase {
 			let posX = quadCurve.getX(by: i)
 			let label = UILabel(frame: CGRect( x: posX - labelWidth / 2, y: chartHeaderHeight - 10, width: labelWidth, height: 10))
 			label.text = "\(labels[i-1])"
-			label.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightLight)
+			label.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.light)
 			label.textColor = labelsColor
 			label.textAlignment = .center
 			label.tag = i+2000
