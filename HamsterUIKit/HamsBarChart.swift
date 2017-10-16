@@ -184,7 +184,7 @@ open class HamsBarChart: HamsChartBase {
 	fileprivate func drawLabels(column i:Int, posX: CGFloat) {
 		let label = UILabel(frame: CGRect( x: posX-5, y: base+10, width: offsets.column + 10, height: 10))
 		label.text = "\(labels[i])"
-		label.font = UIFont.systemFont(ofSize: 10, weight: UIFontWeightRegular)
+		label.font = UIFont.systemFont(ofSize: 10, weight: UIFont.Weight.regular)
 		label.textColor = labelsColor
 		label.adjustsFontSizeToFitWidth = true
 		label.textAlignment = .center

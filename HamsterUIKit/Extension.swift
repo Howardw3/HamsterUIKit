@@ -21,7 +21,7 @@ extension UIView:UIViewExtention {
 }
 
 extension Collection where Index : Comparable {
-	subscript(back i: IndexDistance) -> Generator.Element {
+	subscript(back i: IndexDistance) -> Iterator.Element {
 		let backBy = i + 1
 		return self[self.index(self.endIndex, offsetBy: -backBy)]
 	}
