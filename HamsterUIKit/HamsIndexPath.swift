@@ -18,7 +18,7 @@ open class HamsIndexPath {
 	///	method to create a HamsIndexPath
 	public init(column: Int, view: Int) {
 		_column = column
-		_chart = chart
+		_chart = view
 	}
 	
 	open var column: Int { return _column }

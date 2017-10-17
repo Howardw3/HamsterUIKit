@@ -10,8 +10,8 @@ class HamsCurveChartController:UIViewController, HamsCurveChartDelegate, HamsCur
 	let blue = UIColor(hue: 216/360, saturation: 38/100, brightness: 83/100, alpha: 1)
 	
 	let dataSets = [[20, 3000, 100, 20,222,1000,0,92,40],
-	                [0, 60, 20, 0],
-	                [30, 60, 1, 0],
+	                [100, 60, 1, 0],
+	                [0, 60, 1, 0],
 	                [0, 0, 0, 0]]
 	
 	@IBOutlet weak var hamsCurveChart: HamsCurveChart!
@@ -23,9 +23,12 @@ class HamsCurveChartController:UIViewController, HamsCurveChartDelegate, HamsCur
 		hamsCurveChart.delegate = self
 		hamsCurveChart.dataSource = self
 		self.view.addSubview(hamsCurveChart)
-		_reloadData()
+		
 	}
 	
+    override func viewWillAppear(_ animated: Bool) {
+        _reloadData()
+    }
 	func _reloadData() {
 		//load your data here
 		
@@ -44,7 +47,7 @@ class HamsCurveChartController:UIViewController, HamsCurveChartDelegate, HamsCur
 			
 			hamsCurveChart.filledStyle = .plain(blue)
 			hamsCurveChart.maxValue = 50
-			hamsCurveChart.pageIndicatorTintColor = UIColor(hue: 336, saturation: 19, brightness: 100, alpha: 1)
+			hamsCurveChart.pageIndicatorTintColor = UIColor(hue: 336/360, saturation: 19/100, brightness: 100/100, alpha: 1)
 		case 2:
 			hamsCurveChart.filledStyle = .plain(redDark)
 			hamsCurveChart.suggestValue = 100
@@ -70,6 +73,7 @@ class HamsCurveChartController:UIViewController, HamsCurveChartDelegate, HamsCur
 			point.pointValue = CGFloat(dataSets[indexPath.chart][indexPath.column])
 		default:break
 		}
+//        debugPrint(indexPath.chart, point.pointValue)
 		return point
 	}
 	

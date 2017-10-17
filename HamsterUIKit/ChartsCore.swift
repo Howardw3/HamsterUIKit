@@ -26,13 +26,13 @@ open class ChartsCore {
 		return chartHeight - topBorder - bottomBorder
 	}
 	
-	open var max: CGFloat {
-		return getY(by: values.max()!)
-	}
-	
-	open var min: CGFloat {
-		return getY(by: values.min()!)
-	}
+    open lazy var max: CGFloat = {
+        return self.getY(by: self.values.max()!)
+    }()
+    
+    open lazy var min: CGFloat = {
+        return self.getY(by: self.values.min()!)
+    }()
 	
 	public init(with points: [CGFloat], frameSize:CGSize) {
 		values = points

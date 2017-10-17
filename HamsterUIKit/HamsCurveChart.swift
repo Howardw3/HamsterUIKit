@@ -118,41 +118,46 @@ open class HamsCurveChart: HamsChartBase {
 		delegate?.curveChart!(self, configureForCharts: currentChart)
 		super.update()
 		
-		if numberOfValues > 0 {
-			for i in 0..<numberOfValues(in: currentChart) {
-				let curveChartPoint = dataSource?.curveChart(self, pointForChart: HamsIndexPath(column: i, view: currentChart))
-				chartValues.append((curveChartPoint?.pointValue)!)
-			}
-			if chartValues.max() == 0 {
-				isDataEmpty = true
-			} else {
-				isDataEmpty = false
-			}
-		} else {
-			chartValues = [0, 0]
-			isDataEmpty = true
-		}
-		
-		if let val = value(type: startPoint, left: true) {
-			chartValues = [val] + chartValues
-		}
-		
-		if let val = value(type: endPoint, left: false) {
-			chartValues = chartValues + [val]
-		}
-		numberOfValues = chartValues.count
-		
+		updateData()
+
 		let contentOffsets = ChartOffset(top: offsets.top + chartHeaderHeight + gapBtwPointAndValue + labelHeight + 20,
 		                                 bottom: offsets.bottom + chartFooterHeight,
 		                                 column: offsets.column,
 		                                 horizon: offsets.horizon)
 		quadCurve = QuadCurveAlgorithm(with: chartValues, frameSize: frame.size, offsets: contentOffsets)
-		
+
 		quadCurve.maxValue = maximum
 		labelWidth = quadCurve.unitWidth
 		setLabels()
 	}
 	
+    fileprivate func updateData() {
+        if numberOfValues > 0 {
+            for i in 0..<numberOfValues(in: currentChart) {
+                let curveChartPoint = dataSource?.curveChart(self, pointForChart: HamsIndexPath(column: i, view: currentChart))
+                chartValues.append((curveChartPoint?.pointValue)!)
+            }
+
+            if chartValues.max() == 0 {
+                isDataEmpty = true
+            } else {
+                isDataEmpty = false
+            }
+        } else {
+            chartValues = [0, 0]
+            isDataEmpty = true
+        }
+        
+        if let val = value(type: startPoint, left: true) {
+            chartValues = [val] + chartValues
+        }
+        
+        if let val = value(type: endPoint, left: false) {
+            chartValues = chartValues + [val]
+        }
+        numberOfValues = chartValues.count
+    }
+    
 	override open func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
 		super.beginTracking(touch, with: event)
 		touchedPoint = touch.location(in: self)
@@ -230,13 +235,13 @@ open class HamsCurveChart: HamsChartBase {
 		let height = frame.height
 		
 		let graphPath = quadCurve.quadCurvePath
-		graphPath.addLine(to: CGPoint(
+        graphPath?.addLine(to: CGPoint(
 			x: quadCurve.getX(by: chartValues.count - 1),
 			y:height))
-		graphPath.addLine(to: CGPoint(
+        graphPath?.addLine(to: CGPoint(
 			x:quadCurve.getX(by: 0),
 			y:height))
-		graphPath.close()
+        graphPath?.close()
 		
 		
 		switch filledStyle! {
@@ -250,7 +255,7 @@ open class HamsCurveChart: HamsChartBase {
 			                          colors: colors as CFArray,
 			                          locations: colorLocations)
 			
-			ctx.addPath(graphPath.cgPath)
+            ctx.addPath((graphPath?.cgPath)!)
 			ctx.clip()
 			var startPoint = CGPoint.zero
 			if quadCurve.maxValue == 0{
@@ -266,7 +271,7 @@ open class HamsCurveChart: HamsChartBase {
 		case .plain(let color):
 			defaultColor = color
 			color.setFill()
-			graphPath.fill()
+            graphPath?.fill()
 		}
 		
 	}
