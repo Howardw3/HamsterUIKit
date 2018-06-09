@@ -14,7 +14,7 @@ public struct ChartOffset {
 	let bottom: CGFloat
 	let column: CGFloat
 	let horizon: CGFloat
-	public init(top: CGFloat, bottom: CGFloat, column: CGFloat, horizon: CGFloat){
+	public init(top: CGFloat, bottom: CGFloat, column: CGFloat, horizon: CGFloat) {
 		self.top = top
 		self.bottom = bottom
 		self.column = column
