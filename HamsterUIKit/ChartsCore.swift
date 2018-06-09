@@ -10,37 +10,36 @@ import Foundation
 import UIKit
 
 open class ChartsCore {
-	fileprivate lazy var chartWidth:CGFloat = 300
-	fileprivate lazy var chartHeight:CGFloat = 100
+	fileprivate lazy var chartWidth: CGFloat = 300
+	fileprivate lazy var chartHeight: CGFloat = 100
 	fileprivate lazy var values: [CGFloat] = [0.0, 1.0]
-	fileprivate var gapBetweenColumns:CGFloat = 20
+	fileprivate var gapBetweenColumns: CGFloat = 20
 	open var alignment: ChartAlignment = .justified
-	open var horizonMargin:CGFloat = 0
-	open var topBorder:CGFloat = 120
-	open var bottomBorder:CGFloat = 10
+	open var horizonMargin: CGFloat = 0
+	open var topBorder: CGFloat = 120
+	open var bottomBorder: CGFloat = 10
 	open var maxValue: CGFloat = 0
-	open var columnWidth:CGFloat = 0
-	
-	
+	open var columnWidth: CGFloat = 0
+
 	open var height: CGFloat {
 		return chartHeight - topBorder - bottomBorder
 	}
-	
+
     open lazy var max: CGFloat = {
         return self.getY(by: self.values.max()!)
     }()
-    
+
     open lazy var min: CGFloat = {
         return self.getY(by: self.values.min()!)
     }()
-	
-	public init(with points: [CGFloat], frameSize:CGSize) {
+
+	public init(with points: [CGFloat], frameSize: CGSize) {
 		values = points
 		chartWidth = frameSize.width
 		chartHeight = frameSize.height
 	}
-	
-	public init(with points: [CGFloat], frameSize:CGSize, offsets: ChartOffset) {
+
+	public init(with points: [CGFloat], frameSize: CGSize, offsets: ChartOffset) {
 		values = points
 		chartWidth = frameSize.width
 		chartHeight = frameSize.height
@@ -49,24 +48,24 @@ open class ChartsCore {
 		bottomBorder = offsets.bottom
 		columnWidth = offsets.column
 	}
-	
+
 	var contentWidth: CGFloat {
 		return chartWidth - horizonMargin * 2
 	}
-	
+
 	var unitWidth: CGFloat {
 		return columnWidth + gapWidth
 	}
-	
+
 	var contentMidWidth: CGFloat {
 		return chartWidth / 2
 	}
-	
-	open func getX(by column:Int) -> CGFloat {
+
+	open func getX(by column: Int) -> CGFloat {
 
 		switch alignment {
 		case .justified:
-			var x:CGFloat = CGFloat(column) * gapWidth
+			var x: CGFloat = CGFloat(column) * gapWidth
 			x += horizonMargin + columnWidth/2
 			return x
 		case .left:
@@ -93,7 +92,7 @@ open class ChartsCore {
 			}
 		}
 	}
-	
+
 	/// gap between columns
 	open var gapWidth: CGFloat {
 		set {
@@ -106,10 +105,10 @@ open class ChartsCore {
 			return gapBetweenColumns
 		}
 	}
-	
+
 	/// get y based on value
-	open func getY(by value:CGFloat) -> CGFloat {
-		var y:CGFloat = value / values.max()! * height
+	open func getY(by value: CGFloat) -> CGFloat {
+		var y: CGFloat = value / values.max()! * height
 		if maxValue != 0.0 {
 			if value > maxValue {
 				y = height
@@ -119,14 +118,14 @@ open class ChartsCore {
 		}
 		return height + topBorder - y
 	}
-	
+
 	/// get point by column
-	open func getPoint(by column:Int) -> CGPoint {
+	open func getPoint(by column: Int) -> CGPoint {
 		return CGPoint(x: getX(by: column),
 		               y: getY(by: values[column]))
-		
+
 	}
-	
+
 }
 
 public enum ChartAlignment {

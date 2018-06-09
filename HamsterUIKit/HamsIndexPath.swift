@@ -14,13 +14,13 @@ import Foundation
 open class HamsIndexPath {
 	fileprivate var _column = 0
 	fileprivate var _chart = 0
-	
+
 	///	method to create a HamsIndexPath
 	public init(column: Int, view: Int) {
 		_column = column
 		_chart = view
 	}
-	
+
 	open var column: Int { return _column }
 	open var chart: Int { return _chart }
 }

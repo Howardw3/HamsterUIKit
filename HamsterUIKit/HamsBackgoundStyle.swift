@@ -10,5 +10,5 @@ import Foundation
 
 public enum HamsBackgoundStyle {
 	case plain(UIColor) // single color
-	case gradient(top: UIColor,bottom: UIColor) // from top to bottom
+	case gradient(top: UIColor, bottom: UIColor) // from top to bottom
 }
