@@ -365,7 +365,7 @@ open class HamsCurveChart: HamsChartBase {
 			if left {
 				return (chartValues[0] + chartValues[1]) / 2
 			} else {
-				return (chartValues[back: 1] + chartValues[back: 2]) / 2
+				return (chartValues[chartValues.count - 1] + chartValues[chartValues.count - 2]) / 2
 			}
 		case .zero:
 			return 0
