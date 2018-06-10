@@ -33,7 +33,7 @@ A simple and elegant UIKit(Chart) for iOS, written in Swift.
 
 ## Installation
 
-<!--### CocoaPods
+### CocoaPods
 1. Add to your Podfile:
 ``` 
 use_frameworks!
@@ -46,7 +46,6 @@ pod install
 3. Import the framework
 ```
 import HamsterUIKit
-```-->
 
 ### Manually 
 
