@@ -68,7 +68,3 @@ fastlane/screenshots
 fastlane/test_output
 
 .DS_Store
-
-HamsterUIKitExample/.DS_Store
-
-.DS_Store
