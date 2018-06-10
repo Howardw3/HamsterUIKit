@@ -10,24 +10,6 @@ A simple and elegant UIKit(Chart) for iOS, written in Swift.
 
 </p>
 
-## Installation
-
-### CocoaPods
-Add to your Podfile:
-```
-use_frameworks!
-pod 'HamsterUIKit'
-```
-Type in terminal:
-```
-pod install
- ```
-
-Import the framework
-```
-import HamsterUIKit
-```
-
 ## Protocols
 ### Initialize and reload
 | UITableView     | HamsCurveChart | HamsBarChart |
@@ -48,10 +30,45 @@ import HamsterUIKit
 |     :---      |          :--- |
 | curveChart(_ curveChart: HamsCurveChart, configureForCharts chart: Int)     | barChart(_ barChart: HamsBarChart, configureForCharts chart: Int)    |
 
+
+## Installation
+
+<!--### CocoaPods
+1. Add to your Podfile:
+``` 
+use_frameworks!
+pod 'HamsterUIKit'
+```
+2. Type in terminal:
+```
+pod install
+```
+3. Import the framework
+```
+import HamsterUIKit
+```-->
+
+### Manually 
+
+``` sh
+git clone https://github.com/Haneke/HanekeSwift.git
+```
+0. Copy and paste the above command in your terminal, it will clone the repo into your disk.
+1. Drag `HamsterUIKit.xcodeproj` to your project in the _Project Navigator_.
+2. Select your project and then your app target. Open the _Build Phases_ panel.
+3. Expand the _Target Dependencies_ group, and add `HamsterUIKit.framework`.
+4. Click on the `+` button at the top left of the panel and select _New Copy Files Phase_. Set _Destination_ to _Frameworks_, and add `HamsterUIKit.framework`.
+5. `import HamsterUIKit` whenever you want to use Haneke.
+
+
 ## Demo
 [Bar Chart Demo](https://github.com/ChromieIsDangerous/HamsterUIKit/blob/master/HamsterUIKitExample/BarChartViewController.swift)
 
 [Curve Chart Demo](https://github.com/ChromieIsDangerous/HamsterUIKit/blob/master/HamsterUIKitExample/HamsCurveChartController.swift)
+
+## Advanced Configuration
+### Bar Chart
+
 
 ## Bar Chart Quick start
 <p align="center">
