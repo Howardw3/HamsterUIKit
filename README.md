@@ -1,6 +1,10 @@
 # HamsterUIKit
 A simple and elegant UIKit(Chart) for iOS, written in Swift.
 
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Platform](https://cocoapod-badges.herokuapp.com/p/HamsterUIKit/badge.png)](https://cocoapods.org/pods/HamsterUIKit)
+[![Build Status](https://travis-ci.org/Howardw3/HamsterUIKit.svg?branch=master)](https://travis-ci.org/Howardw3/HamsterUIKit)
+
 :bar_chart: Curve and bar Charts.   
 :bulb: Protocols are designed based on UIKit(UITableView).  
 :keycap_ten: Draw a complex but elegant graph in 10 minutes.
@@ -32,6 +36,10 @@ A simple and elegant UIKit(Chart) for iOS, written in Swift.
 
 
 ## Installation
+### Carthage
+```
+github "Howardw3/HamsterUIKit"
+```
 
 ### CocoaPods
 1. Add to your Podfile:
