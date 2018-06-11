@@ -1,19 +1,10 @@
 language: swift
 osx_image: xcode9
-xcode_project: HamsterUIKit.xcodeproj
-xcode_scheme: HamsterUIKit
-env:
-  global:
-  - FRAMEWORK_NAME=<HamsterUIKit>
 before_install:
 - brew update
-- brew outdated carthage || brew upgrade carthage
-before_script: 
-before_deploy:
-- carthage build --no-skip-current
-deploy:
-  provider: releases
-  api_key: 71fef5dddc56d1b8b34e6a387e8e352104a491f6
-  file: ''
-  on:
-    repo: Howardw3/HamsterUIKit
+- brew install carthage || brew outdated carthage || brew upgrade carthage
+branches:
+  only:
+    - master
+script:
+  - set -o pipefail && xcodebuild build test -project HamsterUIKit.xcodeproj -scheme HamsterUIKit -destination 'platform=iOS Simulator,name=iPhone SE,OS=10.3.1' | xcpretty --color
