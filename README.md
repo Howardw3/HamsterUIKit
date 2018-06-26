@@ -54,6 +54,7 @@ pod install
 3. Import the framework
 ```
 import HamsterUIKit
+```
 
 ### Manually 
 
